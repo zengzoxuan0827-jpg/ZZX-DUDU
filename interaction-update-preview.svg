@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="980" viewBox="0 0 1500 980">
+  <defs>
+    <style>
+      .bg{fill:#fff4e5}
+      .phone{fill:#fffdf8;stroke:#f4dfbd;stroke-width:2}
+      .card{fill:#fff;stroke:none}
+      .soft{fill:#fff3c8}
+      .yellow{fill:#ffc726}
+      .pale{fill:#fff0b7}
+      .blue{fill:#dff0ff}
+      .text{fill:#19233a;font-family:"Microsoft YaHei","PingFang SC",Arial,sans-serif;font-weight:800}
+      .sub{fill:#798094;font-family:"Microsoft YaHei","PingFang SC",Arial,sans-serif}
+      .small{font-size:18px}
+      .mid{font-size:24px}
+      .big{font-size:34px}
+      .tiny{font-size:15px}
+      .btn{fill:#ffc726}
+      .ghost{fill:#fff0b7}
+      .line{stroke:#efe2ca;stroke-width:2}
+      .tag{fill:#fff0b7}
+      .outline{fill:none;stroke:#ffb000;stroke-width:3;stroke-dasharray:8 8}
+    </style>
+  </defs>
+  <rect class="bg" width="1500" height="980"/>
+  <text x="70" y="70" class="text big">交互调整预览</text>
+  <text x="70" y="105" class="sub mid">先确认预览：日期简化、推荐原地刷新、照片原位上传、只读信息、喜欢按钮无描边。</text>
+
+  <g transform="translate(70 150)">
+    <rect class="phone" x="0" y="0" width="400" height="720" rx="46"/>
+    <text x="34" y="50" class="text tiny">9:41</text>
+    <circle cx="332" cy="44" r="4" fill="#6f6f78"/><circle cx="348" cy="44" r="4" fill="#6f6f78"/><circle cx="364" cy="44" r="4" fill="#6f6f78"/>
+    <rect x="34" y="86" width="54" height="54" rx="18" fill="#ffc3b4"/>
+    <text x="47" y="121" class="text mid">嘟</text>
+    <text x="104" y="108" class="text mid">嘟嘟今天吃什么</text>
+    <text x="104" y="136" class="sub tiny">1岁3个月</text>
+    <rect x="314" y="86" width="54" height="54" rx="18" fill="#fff"/>
+    <path d="M341 100a10 10 0 0 1 10 10v10l5 8h-30l5-8v-10a10 10 0 0 1 10-10Z" fill="none" stroke="#ffa900" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M336 133h10" stroke="#ffa900" stroke-width="3" stroke-linecap="round"/>
+
+    <rect class="card" x="34" y="168" width="332" height="112" rx="28"/>
+    <text x="74" y="235" class="text big">9月1日 星期二</text>
+    <text x="54" y="304" class="sub tiny">仅显示日期与星期，不展示心情/情绪文案和按钮</text>
+
+    <text x="34" y="362" class="text mid">今日推荐</text>
+    <text x="280" y="362" class="text tiny" fill="#ff9f00">换一个推荐</text>
+    <rect class="card" x="34" y="384" width="332" height="170" rx="28"/>
+    <circle cx="88" cy="444" r="35" fill="#fff4d1"/>
+    <ellipse cx="88" cy="444" rx="42" ry="26" fill="#e7b368"/>
+    <ellipse cx="88" cy="430" rx="38" ry="17" fill="#fff6d7"/>
+    <text x="140" y="428" class="text mid">南瓜胡萝卜软饭</text>
+    <text x="140" y="458" class="sub tiny">适合一岁+，软烂小块，少油少盐。</text>
+    <rect class="tag" x="54" y="486" width="82" height="30" rx="15"/><text x="71" y="507" class="text tiny">库存优先</text>
+    <rect class="tag" x="148" y="486" width="82" height="30" rx="15"/><text x="165" y="507" class="text tiny">宝宝喜欢</text>
+    <rect class="btn" x="54" y="526" width="292" height="48" rx="18"/>
+    <text x="155" y="558" class="text small">生成今日辅食</text>
+  </g>
+
+  <g transform="translate(550 150)">
+    <rect class="phone" x="0" y="0" width="400" height="720" rx="46"/>
+    <text x="34" y="50" class="text tiny">9:41</text>
+    <text x="34" y="96" class="sub tiny">库存与推荐</text>
+    <text x="34" y="128" class="text big">食材</text>
+    <rect class="card" x="34" y="156" width="332" height="270" rx="28"/>
+    <circle cx="86" cy="216" r="35" fill="#fff4d1"/>
+    <ellipse cx="86" cy="216" rx="42" ry="26" fill="#e7b368"/>
+    <ellipse cx="86" cy="202" rx="38" ry="17" fill="#fff6d7"/>
+    <text x="140" y="202" class="text mid">南瓜胡萝卜软饭</text>
+    <text x="140" y="232" class="sub tiny">胡萝卜购入第4天，建议优先用</text>
+    <rect class="tag" x="54" y="266" width="60" height="30" rx="15"/><text x="67" y="287" class="text tiny">一岁+</text>
+    <rect class="tag" x="128" y="266" width="84" height="30" rx="15"/><text x="145" y="287" class="text tiny">软烂小块</text>
+    <text x="58" y="332" class="text tiny">1  南瓜、胡萝卜蒸熟切碎。</text>
+    <text x="58" y="362" class="text tiny">2  加入软饭和少量温水拌匀。</text>
+    <rect class="btn" x="54" y="376" width="292" height="48" rx="18"/>
+    <text x="142" y="408" class="text small">换一组辅食</text>
+    <text x="54" y="458" class="sub tiny">点击后只更新此推荐卡片，页面不跳转、不刷新。</text>
+
+    <text x="34" y="518" class="text mid">家里有什么</text>
+    <rect class="card" x="34" y="540" width="332" height="84" rx="28"/>
+    <circle cx="74" cy="582" r="25" fill="#fff4d1"/>
+    <path d="M72 566c18 4 21 19 8 31-16 10-32-5-23-21 3-6 8-9 15-10Z" fill="#ff8f26"/>
+    <text x="116" y="576" class="text small">新添加食材</text>
+    <text x="116" y="606" class="sub tiny">保存后立即出现在列表</text>
+  </g>
+
+  <g transform="translate(1030 150)">
+    <rect class="phone" x="0" y="0" width="400" height="720" rx="46"/>
+    <text x="34" y="50" class="text tiny">9:41</text>
+    <text x="34" y="96" class="sub tiny">今天吃过什么</text>
+    <text x="34" y="128" class="text big">记录</text>
+    <rect class="card" x="34" y="156" width="332" height="84" rx="28"/>
+    <circle cx="74" cy="198" r="26" fill="#fff4d1"/>
+    <text x="116" y="194" class="text small">南瓜、胡萝卜、软饭</text>
+    <text x="116" y="222" class="sub tiny">今日食材，原位置手动编辑</text>
+    <text x="314" y="204" class="text tiny" fill="#ff9f00">修改</text>
+
+    <rect class="card" x="34" y="258" width="332" height="84" rx="28"/>
+    <text x="116" y="296" class="text small">上午 10:30</text>
+    <text x="116" y="324" class="sub tiny">底部滚轮选择器</text>
+    <text x="314" y="306" class="text tiny" fill="#ff9f00">修改</text>
+
+    <rect class="soft" x="34" y="364" width="332" height="118" rx="28"/>
+    <rect class="outline" x="34" y="364" width="332" height="118" rx="28"/>
+    <path d="M188 402h24l7 12h22a12 12 0 0 1 12 12v18a12 12 0 0 1-12 12h-82a12 12 0 0 1-12-12v-18a12 12 0 0 1 12-12h22l7-12Z" fill="none" stroke="#f5a900" stroke-width="5" stroke-linejoin="round"/>
+    <circle cx="200" cy="435" r="13" fill="none" stroke="#f5a900" stroke-width="5"/>
+    <text x="148" y="512" class="text small" fill="#f5a900">点击图标上传/更换</text>
+    <text x="54" y="544" class="sub tiny">照片直接显示在这里，不再进入独立照片页。</text>
+
+    <rect class="btn" x="34" y="576" width="332" height="54" rx="20"/>
+    <text x="148" y="611" class="text small">保存今日记录</text>
+    <text x="34" y="674" class="sub tiny">历史喜欢按钮：白色填充爱心，无描边。</text>
+    <rect class="yellow" x="306" y="648" width="50" height="50" rx="17"/>
+    <path d="M331 682s-18-11-22-22a13 13 0 0 1 22-12 13 13 0 0 1 22 12c-4 11-22 22-22 22Z" fill="#fff"/>
+  </g>
+</svg>

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="520" viewBox="0 0 1100 520">
+  <defs>
+    <style>
+      .bg{fill:#fff4e6}
+      .card{fill:#fffdf8}
+      .title{fill:#19233a;font-family:"Microsoft YaHei","PingFang SC",Arial,sans-serif;font-weight:900}
+      .sub{fill:#768099;font-family:"Microsoft YaHei","PingFang SC",Arial,sans-serif}
+      .btnText{fill:#172036;font-family:"Microsoft YaHei","PingFang SC",Arial,sans-serif;font-weight:800}
+      .tiny{font-size:18px}
+      .mid{font-size:24px}
+      .big{font-size:42px}
+      .chip{fill:#fff}
+      .active{fill:#ffc726}
+    </style>
+  </defs>
+  <rect class="bg" width="1100" height="520"/>
+  <text x="56" y="62" class="title mid">首页心情卡片预览</text>
+  <text x="56" y="96" class="sub tiny">保留表情头像与心情主题色，主标题仅显示日期和星期。</text>
+
+  <g transform="translate(56 140)">
+    <rect class="card" width="988" height="218" rx="46"/>
+    <circle cx="130" cy="108" r="62" fill="#ffe9dd"/>
+    <image href="assets/baby-moods/angry.png" x="68" y="46" width="124" height="124" preserveAspectRatio="xMidYMid meet"/>
+
+    <text x="260" y="78" class="title big">9月1日 星期二</text>
+    <text x="260" y="122" class="sub mid">头像保持透明底，不加投影，主题色随选择变化。</text>
+
+    <g transform="translate(260 146)">
+      <rect class="chip" x="0" y="0" width="118" height="46" rx="23"/>
+      <text class="btnText tiny" x="40" y="29">开心</text>
+      <rect class="chip" x="148" y="0" width="118" height="46" rx="23"/>
+      <text class="btnText tiny" x="188" y="29">难过</text>
+      <rect class="active" x="296" y="0" width="118" height="46" rx="23"/>
+      <text class="btnText tiny" x="336" y="29">生气</text>
+      <rect class="chip" x="444" y="0" width="118" height="46" rx="23"/>
+      <text class="btnText tiny" x="484" y="29">一般</text>
+    </g>
+  </g>
+
+  <g transform="translate(56 408)">
+    <rect x="0" y="0" width="22" height="22" rx="11" fill="#ffc726"/>
+    <text x="36" y="20" class="sub tiny">应用后：切换心情只影响头像和主题色，不再出现“今天很开心 / 今天有点生气”等情绪标题。</text>
+  </g>
+</svg>
