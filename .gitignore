@@ -10,3 +10,4 @@ __pycache__/
 site-package.tar.gz
 界面静态打包/
 dist/verify-*.png
+dist/nav-*.png
