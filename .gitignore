@@ -9,3 +9,4 @@ __pycache__/
 # 生成产物（与 assets/ + dist/ 内容重复，仓库仅保留源码）
 site-package.tar.gz
 界面静态打包/
+dist/verify-*.png
