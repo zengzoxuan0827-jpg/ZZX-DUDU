@@ -4,7 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>嘟嘟今天吃什么</title>
-  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <!-- Figma capture 脚本已移除：避免外部依赖与离线 404 -->
   <style>
     :root {
       --theme: #ffc928;
@@ -228,7 +229,7 @@
       flex: 0 0 auto;
       overflow: hidden;
       font: inherit;
-      font-size: 30px;
+      font-size: 34px;
       font-weight: 900;
       cursor: pointer;
       box-shadow: var(--soft-shadow);
@@ -254,6 +255,7 @@
     h2 {
       margin: 0;
       font-size: 25px;
+      font-weight: 900;
       line-height: 1.16;
       letter-spacing: 0;
     }
@@ -341,6 +343,7 @@
     .recipe-copy strong {
       display: block;
       font-size: 24px;
+      font-weight: 800;
       line-height: 1.18;
       margin-bottom: 7px;
     }
@@ -614,6 +617,7 @@
     .dish-copy strong {
       display: block;
       font-size: 21px;
+      font-weight: 800;
       line-height: 1.22;
       margin-bottom: 6px;
     }
@@ -1611,6 +1615,10 @@
       z-index: 2;
     }
 
+    .tabbar.hidden {
+      display: none;
+    }
+
     .nav-item {
       border: 0;
       border-radius: 20px;
@@ -1795,7 +1803,7 @@
               <div class="food-name">胡萝卜</div>
               <div class="food-meta">购入第4天，还剩2天</div>
             </div>
-            <span class="food-tag">优先用</span>
+            <span class="food-tag" role="note">优先用</span>
           </article>
         </div>
       </section>
@@ -1852,8 +1860,9 @@
         </section>
       </section>
 
-      <section class="screen" id="ingredients-screen" aria-label="食材页面">
+      <section class="screen sub-screen" id="ingredients-screen" aria-label="食材页面">
         <header class="topbar">
+          <button class="back-button" type="button" data-back="home" aria-label="返回"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m15 18-6-6 6-6"/></svg></button>
           <div>
             <div class="eyebrow">库存与推荐</div>
             <h2>食材</h2>
@@ -1894,17 +1903,17 @@
           <article class="food-card" data-open="ingredient-detail-screen">
             <div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/carrot.png" alt=""></div>
             <div class="food-copy"><div class="food-name">胡萝卜</div><div class="food-meta">购入第4天，还剩2天</div></div>
-            <span class="food-tag">优先</span>
+            <span class="food-tag" role="note">优先</span>
           </article>
           <article class="food-card">
             <div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/pumpkin.png" alt=""></div>
             <div class="food-copy"><div class="food-name">南瓜</div><div class="food-meta">购入第2天，偏好高</div></div>
-            <span class="food-tag">喜欢</span>
+            <span class="food-tag" role="note">喜欢</span>
           </article>
           <article class="food-card">
             <div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/rice.png" alt=""></div>
             <div class="food-copy"><div class="food-name">软饭</div><div class="food-meta">常备主食，适合混合</div></div>
-            <span class="food-tag">常用</span>
+            <span class="food-tag" role="note">常用</span>
           </article>
         </div>
 
@@ -1926,8 +1935,9 @@
         </div>
       </section>
 
-      <section class="screen" id="record-screen" aria-label="记录页面">
+      <section class="screen sub-screen" id="record-screen" aria-label="记录页面">
         <header class="topbar">
+          <button class="back-button" type="button" data-back="home" aria-label="返回"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m15 18-6-6 6-6"/></svg></button>
           <div>
             <div class="eyebrow">今天吃过什么</div>
             <h2>记录</h2>
@@ -1948,7 +1958,7 @@
           <article class="form-card amount-card">
             <div class="rice-state half" aria-hidden="true"><img id="rice-state-img" src="assets/clean-rice-amount/half.png" alt=""></div>
             <div class="form-copy">
-              <div class="form-name">小半碗</div>
+              <div class="form-name">半碗</div>
               <div class="food-meta">分量</div>
               <div class="amount-options" aria-label="米饭食用量">
                 <button class="amount-option" type="button" data-amount="full"><img class="amount-mini" src="assets/clean-rice-amount/full.png" alt="">整碗</button>
@@ -1982,7 +1992,7 @@
         <div class="record-list">
           <article class="record-card" data-open="record-detail-screen">
             <div class="record-photo" aria-hidden="true"><img src="assets/clean-ingredients/rice.png" alt=""><span>今天</span></div>
-            <div class="record-copy"><div class="record-name">南瓜胡萝卜软饭</div><div class="record-meta">小半碗，接受度好</div></div>
+            <div class="record-copy"><div class="record-name">南瓜胡萝卜软饭</div><div class="record-meta">半碗，接受度好</div></div>
             <button class="love" type="button" aria-pressed="true" aria-label="取消宝宝喜欢"><svg viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg></button>
           </article>
           <article class="record-card" data-open="record-detail-screen">
@@ -2097,7 +2107,7 @@
         <section class="info-panel">
           <div class="panel-title">饮食内容</div>
           <div class="info-row"><strong>今日食材</strong><span>南瓜、胡萝卜、软饭</span></div>
-          <div class="info-row"><strong>食用分量</strong><span>小半碗</span></div>
+          <div class="info-row"><strong>食用分量</strong><span>半碗</span></div>
           <div class="info-row"><strong>喂食时间</strong><span>上午 10:30</span></div>
           <div class="info-row"><strong>宝宝反馈</strong><span>接受度好</span></div>
         </section>
@@ -2112,7 +2122,7 @@
         </header>
         <div class="segmented" aria-label="历史筛选"><button class="segment active" type="button" data-filter="today">今天</button><button class="segment" type="button" data-filter="week">本周</button><button class="segment" type="button" data-filter="month">本月</button></div>
         <div class="record-list history-list">
-          <article class="record-card" data-open="record-detail-screen"><div class="record-photo" aria-hidden="true"><img src="assets/clean-ingredients/rice.png" alt=""><span>今天</span></div><div class="record-copy"><div class="record-name">南瓜胡萝卜软饭</div><div class="record-meta">小半碗，接受度好</div></div><img class="feedback-mood" src="assets/baby-moods/happy.png" alt=""></article>
+          <article class="record-card" data-open="record-detail-screen"><div class="record-photo" aria-hidden="true"><img src="assets/clean-ingredients/rice.png" alt=""><span>今天</span></div><div class="record-copy"><div class="record-name">南瓜胡萝卜软饭</div><div class="record-meta">半碗，接受度好</div></div><img class="feedback-mood" src="assets/baby-moods/happy.png" alt=""></article>
           <article class="record-card" data-open="record-detail-screen"><div class="record-photo" aria-hidden="true"><img src="assets/clean-ingredients/noodles.png" alt=""><span>昨天</span></div><div class="record-copy"><div class="record-name">番茄鸡蛋软面</div><div class="record-meta">半碗，嘟嘟喜欢</div></div><img class="feedback-mood" src="assets/baby-moods/normal.png" alt=""></article>
         </div>
       </section>
@@ -2124,8 +2134,8 @@
           <span></span>
         </header>
         <div class="food-list">
-          <article class="food-card" data-open="ingredient-detail-screen"><div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/carrot.png" alt=""></div><div class="food-copy"><div class="food-name">胡萝卜建议优先用</div><div class="food-meta">已存放4天，今天推荐加入辅食</div></div><span class="food-tag">食材</span></article>
-          <article class="food-card" data-go="record"><div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/rice.png" alt=""></div><div class="food-copy"><div class="food-name">今天还没保存记录</div><div class="food-meta">上传辅食照片后可保存今日记录</div></div><span class="food-tag">记录</span></article>
+          <article class="food-card" data-open="ingredient-detail-screen"><div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/carrot.png" alt=""></div><div class="food-copy"><div class="food-name">胡萝卜建议优先用</div><div class="food-meta">已存放4天，今天推荐加入辅食</div></div><span class="food-tag" role="note">食材</span></article>
+          <article class="food-card" data-go="record"><div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/rice.png" alt=""></div><div class="food-copy"><div class="food-name">今天还没保存记录</div><div class="food-meta">上传辅食照片后可保存今日记录</div></div><span class="food-tag" role="note">记录</span></article>
         </div>
       </section>
 
@@ -2270,6 +2280,12 @@
       return `${month}月${day}日`;
     }
 
+    function formatToday() {
+      const now = new Date();
+      const weekdays = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+      return `${now.getMonth() + 1}月${now.getDate()}日 ${weekdays[now.getDay()]}`;
+    }
+
     function makeColumn(key, values, activeValue) {
       const column = document.createElement('div');
       column.className = 'picker-column';
@@ -2360,10 +2376,17 @@
         moodBlob.className = 'mood-blob';
         moodIcon.src = `assets/baby-moods/${button.dataset.mood}.png`;
         moodIcon.alt = '宝宝表情';
-        moodTitle.textContent = '9月1日 星期二';
-        moodDesc.textContent = '头像跟随心情变化，主题色同步切换。';
+        moodTitle.textContent = formatToday();
+        moodDesc.textContent = mood.desc;
       });
     });
+
+    function resetSaveRecordButton() {
+      const btn = document.querySelector('[data-action="save-record"]');
+      if (!btn) return;
+      btn.textContent = '保存今日记录';
+      btn.classList.remove('is-done');
+    }
 
     function switchScreen(target) {
       document.querySelectorAll('.screen').forEach((screen) => {
@@ -2372,6 +2395,9 @@
       document.querySelectorAll('.nav-item').forEach((item) => {
         item.classList.toggle('active', item.dataset.target === target);
       });
+      const tabbar = document.querySelector('.tabbar');
+      if (tabbar) tabbar.classList.toggle('hidden', target !== 'home');
+      if (target === 'record') resetSaveRecordButton();
       scrollActiveTop();
     }
 
@@ -2382,6 +2408,8 @@
       document.querySelectorAll('.nav-item').forEach((item) => {
         item.classList.toggle('active', screenId === `${item.dataset.target}-screen`);
       });
+      const tabbar = document.querySelector('.tabbar');
+      if (tabbar) tabbar.classList.add('hidden');
       scrollActiveTop();
     }
 
@@ -2475,7 +2503,7 @@
 
     const amountLabels = {
       full: '一整碗',
-      half: '小半碗',
+      half: '半碗',
       empty: '空碗'
     };
 
@@ -2649,7 +2677,7 @@
       detailScreen.querySelector('.detail-main .food-meta').textContent = recipe.desc;
       renderChips(detailScreen.querySelector('.detail-hero .chips'), recipe.chips);
       const ageReason = document.getElementById('recipe-age-reason');
-      if (ageReason) ageReason.textContent = `${getAgeStage(currentAge ? currentAge.totalMonths : recipe.minMonths)}${recipe.ageNote ? ` ${recipe.ageNote}` : ''}`;
+      if (ageReason) ageReason.textContent = recipe.ageNote || getAgeStage(currentAge ? currentAge.totalMonths : recipe.minMonths);
 
       const reasonRows = detailScreen.querySelectorAll('.info-panel:nth-of-type(1) .info-row span');
       if (reasonRows[1]) reasonRows[1].textContent = recipe.reason.stock;
@@ -2680,13 +2708,13 @@
 
     function createIngredientCard(name, dateText, category, storage) {
       const article = document.createElement('article');
-      const icon = category === '主食' ? 'rice' : category === '蛋白质' ? 'noodles' : category === '水果' ? 'pumpkin' : 'carrot';
+      const icon = category === '主食' ? 'rice' : category === '蛋白质' ? 'noodles' : category === '水果' ? 'apple' : 'carrot';
       article.className = 'food-card';
       article.dataset.open = 'ingredient-detail-screen';
       article.innerHTML = `
         <div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/${icon}.png" alt=""></div>
         <div class="food-copy"><div class="food-name">${name}</div><div class="food-meta">${dateText}，${storage}</div></div>
-        <span class="food-tag">${category}</span>
+        <span class="food-tag" role="note">${category}</span>
       `;
       article.addEventListener('click', (event) => {
         event.stopPropagation();
@@ -2741,6 +2769,7 @@
           button.textContent = '已保存今日记录';
           button.classList.add('is-done');
           showToast('今日记录已保存');
+          saveRecord();
         }
         if (action === 'save-ingredient') {
           const name = addIngredientName.value.trim() || '新食材';
@@ -2757,7 +2786,8 @@
           document.querySelectorAll('[data-open="ingredient-detail-screen"]').forEach((card) => card.classList.add('is-used'));
           button.textContent = '已标记用完';
           button.classList.add('is-done');
-          showToast('胡萝卜已标记用完');
+          const ingName = document.querySelector('#ingredient-detail-screen .detail-title');
+          showToast(`${ingName ? ingName.textContent : '该食材'}已标记用完`);
         }
         if (action === 'eat-again') showToast('已带入今日记录');
         if (action === 'change-photo') {
@@ -2816,7 +2846,58 @@
     });
     lightboxImg.addEventListener('click', (event) => event.stopPropagation());
 
+    const RECORD_KEY = 'dudu.record.v1';
+    function saveRecord() {
+      try {
+        const activeAmount = document.querySelector('.amount-option.active');
+        const data = {
+          food: recordFoodInput ? recordFoodInput.value : '',
+          amount: activeAmount ? activeAmount.dataset.amount : 'half',
+          time: recordTimeInput ? recordTimeInput.dataset.value : '10:30'
+        };
+        localStorage.setItem(RECORD_KEY, JSON.stringify(data));
+      } catch (e) { /* localStorage 不可用时忽略 */ }
+    }
+    function loadRecord() {
+      try {
+        const raw = localStorage.getItem(RECORD_KEY);
+        if (!raw) return;
+        const data = JSON.parse(raw);
+        if (data.food && recordFoodInput) recordFoodInput.value = data.food;
+        if (data.time && recordTimeInput) {
+          recordTimeInput.dataset.value = data.time;
+          recordTimeInput.textContent = formatTime(data.time);
+        }
+        if (data.amount) {
+          const opt = document.querySelector(`.amount-option[data-amount="${data.amount}"]`);
+          if (opt) {
+            document.querySelectorAll('.amount-option').forEach((item) => item.classList.remove('active'));
+            opt.classList.add('active');
+            const riceState = document.querySelector('.rice-state');
+            if (riceState) riceState.className = `rice-state ${data.amount}`;
+            const img = document.getElementById('rice-state-img');
+            if (img) img.src = `assets/clean-rice-amount/${data.amount}.png`;
+            const fn = document.querySelector('.amount-card .form-name');
+            if (fn) fn.textContent = amountLabels[data.amount];
+          }
+        }
+      } catch (e) { /* 忽略损坏数据 */ }
+    }
+
+    function initStaticText() {
+      if (moodTitle) moodTitle.textContent = formatToday();
+      if (moodDesc) moodDesc.textContent = moodMap.happy.desc;
+      if (addIngredientDate) {
+        const today = new Date();
+        const ymd = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+        addIngredientDate.dataset.value = ymd;
+        addIngredientDate.textContent = formatDate(ymd);
+      }
+    }
+
+    initStaticText();
     updateBabyAge();
+    loadRecord();
     showPreviewScreen();
     setInterval(updateBabyAge, 60 * 60 * 1000);
   </script>

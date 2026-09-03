@@ -15,7 +15,7 @@ output_dir.mkdir(parents=True, exist_ok=True)
 for name, col in items:
     crop = image.crop((col * cell_width, 0, (col + 1) * cell_width, height))
     pixels = []
-    for red, green, blue, alpha in crop.getdata():
+    for red, green, blue, alpha in crop.get_flattened_data():
         if red > 246 and green > 242 and blue > 232:
             pixels.append((red, green, blue, 0))
         else:

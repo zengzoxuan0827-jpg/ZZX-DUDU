@@ -28,7 +28,7 @@ for name, col, row in items:
         )
     )
     transparent_pixels = []
-    for red, green, blue, alpha in crop.getdata():
+    for red, green, blue, alpha in crop.get_flattened_data():
         if red > 246 and green > 246 and blue > 246:
             transparent_pixels.append((red, green, blue, 0))
         else:
