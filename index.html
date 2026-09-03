@@ -8,6 +8,20 @@
   <!-- Figma capture 脚本已移除：避免外部依赖与离线 404 -->
   <style>
     :root {
+      /* ===== 设计调色板：HEX / RGB / HSL 对照表 =====
+         颜色          HEX        RGB                  HSL
+         theme  浅黄   #ffc928  rgb(255,201,40)   hsl(45,100%,58%)
+         deep   深黄   #f5ae16  rgb(245,174,22)   hsl(41, 92%,52%)
+         soft   奶黄   #fff2bf  rgb(255,242,191)  hsl(48,100%,88%)
+         bg     背景   #fff4e8  rgb(255,244,232)  hsl(31,100%,95%)
+         phone  机身   #fffefd  rgb(255,254,253)  hsl(30,100%,100%)
+         card   卡片   #ffffff  rgb(255,255,255)  hsl(0,   0%,100%)
+         text   主文字 #34333a  rgb(52,51,58)     hsl(249, 6%,21%)
+         muted  次文字 #8d8991  rgb(141,137,145)  hsl(270, 4%,55%)
+         line   分割线 #f0ebe4  rgb(240,235,228)  hsl(35, 29%,92%)
+         shadow 暖影   rgba(221,154,72,.20)  hsl(33,69%,58%)
+         soft   柔影   rgba(72,57,33,.08)    hsl(37,37%,21%)
+         ================================================ */
       --theme: #ffc928;
       --theme-deep: #f5ae16;
       --theme-soft: #fff2bf;
@@ -17,8 +31,23 @@
       --text: #34333a;
       --muted: #8d8991;
       --line: #f0ebe4;
-      --shadow: 0 24px 60px rgba(221, 154, 72, .20);
-      --soft-shadow: 0 12px 28px rgba(72, 57, 33, .08);
+
+      /* RGB 三元组变量：供 rgb(var(--x-rgb) / a) 派生半透明色，集中管理 */
+      --theme-rgb: 255, 201, 40;
+      --theme-deep-rgb: 245, 174, 22;
+      --theme-soft-rgb: 255, 242, 191;
+      --bg-rgb: 255, 244, 232;
+      --phone-rgb: 255, 254, 253;
+      --card-rgb: 255, 255, 255;
+      --text-rgb: 52, 51, 58;
+      --muted-rgb: 141, 137, 145;
+      --line-rgb: 240, 235, 228;
+      --shadow-rgb: 221, 154, 72;
+      --soft-shadow-rgb: 72, 57, 33;
+
+      /* 阴影改为从三元组派生，替换原写死的 rgba() */
+      --shadow: 0 24px 60px rgb(var(--shadow-rgb) / .20);
+      --soft-shadow: 0 12px 28px rgb(var(--soft-shadow-rgb) / .08);
     }
 
     * {
@@ -2197,6 +2226,44 @@
   </main>
 
   <script>
+    /* ===== 设计调色板：HEX / RGB / HSL（与 :root 变量一一对应，可在 JS 中动态取色）=====
+       rgb 为三元组 [r,g,b]；hsl 为 [h,s%,l%]，便于程序化换肤 / 计算对比色 */
+    const PALETTE = {
+      theme:      { hex: '#ffc928', rgb: [255, 201, 40],  hsl: [45, 100, 58] },
+      'theme-deep': { hex: '#f5ae16', rgb: [245, 174, 22],  hsl: [41, 92, 52] },
+      'theme-soft': { hex: '#fff2bf', rgb: [255, 242, 191], hsl: [48, 100, 88] },
+      bg:         { hex: '#fff4e8', rgb: [255, 244, 232], hsl: [31, 100, 95] },
+      phone:      { hex: '#fffefd', rgb: [255, 254, 253], hsl: [30, 100, 100] },
+      card:       { hex: '#ffffff', rgb: [255, 255, 255], hsl: [0, 0, 100] },
+      text:       { hex: '#34333a', rgb: [52, 51, 58],     hsl: [249, 6, 21] },
+      muted:      { hex: '#8d8991', rgb: [141, 137, 145], hsl: [270, 4, 55] },
+      line:       { hex: '#f0ebe4', rgb: [240, 235, 228], hsl: [35, 29, 92] }
+    };
+
+    function hexToRgb(hex) {
+      const h = hex.replace('#', '');
+      const n = parseInt(h.length === 3 ? h.split('').map(c => c + c).join('') : h, 16);
+      return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+    }
+    function rgbToHsl(r, g, b) {
+      r /= 255; g /= 255; b /= 255;
+      const max = Math.max(r, g, b), min = Math.min(r, g, b);
+      let h = 0, s = 0; const l = (max + min) / 2;
+      const d = max - min;
+      if (d !== 0) {
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        switch (max) {
+          case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+          case g: h = (b - r) / d + 2; break;
+          default: h = (r - g) / d + 4;
+        }
+        h *= 60;
+      }
+      return [Math.round(h), Math.round(s * 100), Math.round(l * 100)];
+    }
+    function hexToHsl(hex) { const [r, g, b] = hexToRgb(hex); return rgbToHsl(r, g, b); }
+    // 例：带透明度取色 -> `rgb(${PALETTE.theme.rgb.join(',')} / .2)`
+
     const moodMap = {
       happy: {
         theme: '#ffc928',
