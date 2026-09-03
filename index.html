@@ -1754,6 +1754,19 @@
         gap: 6px;
       }
     }
+    /* ===== 可访问性 & 动效偏好（响应式规范） ===== */
+    :focus-visible {
+      outline: 3px solid var(--theme-deep);
+      outline-offset: 2px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1770,7 +1783,7 @@
             <button class="hello-profile" type="button" data-open="baby-profile-screen" aria-label="查看宝宝资料">
               <span class="baby-photo">
                 <span>嘟</span>
-                <img alt="宝宝照片预览" id="baby-preview">
+                <img alt="宝宝照片预览" id="baby-preview" loading="lazy">
               </span>
               <span>
                 <span class="top-title">嘟嘟今天吃什么</span>
@@ -1785,7 +1798,7 @@
 
         <div class="mood-hero">
           <div class="mood-row">
-            <div class="mood-blob" id="mood-blob"><img id="mood-icon" src="assets/baby-moods/happy.png" alt="宝宝表情"></div>
+            <div class="mood-blob" id="mood-blob"><img id="mood-icon" src="assets/baby-moods/happy.png" alt="宝宝表情" loading="lazy"></div>
             <div class="mood-copy">
               <strong class="mood-title-date" id="mood-title">9月1日 星期二</strong>
               <p id="mood-desc">头像跟随心情变化，主题色同步切换。</p>
@@ -1805,7 +1818,7 @@
         </div>
         <article class="dish-card">
           <div class="dish-main">
-            <div class="food-art" aria-hidden="true"><img class="dish-icon" src="assets/clean-ingredients/rice.png" alt=""></div>
+            <div class="food-art" aria-hidden="true"><img class="dish-icon" src="assets/clean-ingredients/rice.png" alt="" loading="lazy"></div>
             <div class="dish-copy">
               <strong>南瓜胡萝卜软饭</strong>
               <p>适合一岁+，软烂小块，少油少盐。</p>
@@ -1827,7 +1840,7 @@
         </div>
         <div class="food-list" id="ingredient-list">
           <article class="food-card" data-open="ingredient-detail-screen">
-            <div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/carrot.png" alt=""></div>
+            <div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/carrot.png" alt="" loading="lazy"></div>
             <div class="food-copy">
               <div class="food-name">胡萝卜</div>
               <div class="food-meta">购入第4天，还剩2天</div>
@@ -1847,7 +1860,7 @@
           <div class="detail-main">
             <label class="profile-avatar" for="baby-upload" aria-label="上传宝宝照片">
               <span>嘟</span>
-              <img alt="宝宝照片预览" id="profile-baby-preview">
+              <img alt="宝宝照片预览" id="profile-baby-preview" loading="lazy">
             </label>
             <input id="baby-upload" type="file" accept="image/*" hidden>
             <div>
@@ -1891,7 +1904,6 @@
 
       <section class="screen sub-screen" id="ingredients-screen" aria-label="食材页面">
         <header class="topbar">
-          <button class="back-button" type="button" data-back="home" aria-label="返回"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m15 18-6-6 6-6"/></svg></button>
           <div>
             <div class="eyebrow">库存与推荐</div>
             <h2>食材</h2>
@@ -1903,7 +1915,7 @@
 
         <article class="recipe-hero">
           <div class="recipe-row">
-            <div class="food-art" aria-hidden="true"><img class="dish-icon" src="assets/clean-ingredients/rice.png" alt=""></div>
+            <div class="food-art" aria-hidden="true"><img class="dish-icon" src="assets/clean-ingredients/rice.png" alt="" loading="lazy"></div>
             <div class="recipe-copy">
               <strong>南瓜胡萝卜软饭</strong>
               <p>优先使用临期胡萝卜，搭配嘟嘟喜欢的南瓜。</p>
@@ -1930,17 +1942,17 @@
         </div>
         <div class="food-list">
           <article class="food-card" data-open="ingredient-detail-screen">
-            <div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/carrot.png" alt=""></div>
+            <div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/carrot.png" alt="" loading="lazy"></div>
             <div class="food-copy"><div class="food-name">胡萝卜</div><div class="food-meta">购入第4天，还剩2天</div></div>
             <span class="food-tag" role="note">优先</span>
           </article>
           <article class="food-card">
-            <div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/pumpkin.png" alt=""></div>
+            <div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/pumpkin.png" alt="" loading="lazy"></div>
             <div class="food-copy"><div class="food-name">南瓜</div><div class="food-meta">购入第2天，偏好高</div></div>
             <span class="food-tag" role="note">喜欢</span>
           </article>
           <article class="food-card">
-            <div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/rice.png" alt=""></div>
+            <div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/rice.png" alt="" loading="lazy"></div>
             <div class="food-copy"><div class="food-name">软饭</div><div class="food-meta">常备主食，适合混合</div></div>
             <span class="food-tag" role="note">常用</span>
           </article>
@@ -1952,12 +1964,12 @@
         </div>
         <div class="food-list">
           <article class="food-card" data-open="recipe-detail-screen">
-            <div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/rice.png" alt=""></div>
+            <div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/rice.png" alt="" loading="lazy"></div>
             <div class="food-copy"><div class="food-name">南瓜胡萝卜软饭</div><div class="food-meta">接受度高，可优先推荐</div></div>
             <button class="like-pill" type="button" aria-pressed="false" aria-label="标记宝宝喜欢"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.2-9-8.8a5 5 0 0 1 8-4.9 5 5 0 0 1 8 4.9C19 15.8 12 20 12 20Z"/></svg></button>
           </article>
           <article class="food-card" data-open="recipe-detail-screen">
-            <div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/noodles.png" alt=""></div>
+            <div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/noodles.png" alt="" loading="lazy"></div>
             <div class="food-copy"><div class="food-name">番茄鸡蛋软面</div><div class="food-meta">常吃搭配，适合状态一般时</div></div>
             <button class="like-pill" type="button" aria-pressed="false" aria-label="标记宝宝喜欢"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.2-9-8.8a5 5 0 0 1 8-4.9 5 5 0 0 1 8 4.9C19 15.8 12 20 12 20Z"/></svg></button>
           </article>
@@ -1966,7 +1978,6 @@
 
       <section class="screen sub-screen" id="record-screen" aria-label="记录页面">
         <header class="topbar">
-          <button class="back-button" type="button" data-back="home" aria-label="返回"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m15 18-6-6 6-6"/></svg></button>
           <div>
             <div class="eyebrow">今天吃过什么</div>
             <h2>记录</h2>
@@ -1977,32 +1988,32 @@
         <div class="form-list">
           <article class="form-card editable" data-action="edit-food">
             <div class="field-food-stack" aria-hidden="true">
-              <img src="assets/clean-ingredients/pumpkin.png" alt="">
-              <img src="assets/clean-ingredients/carrot.png" alt="">
-              <img src="assets/clean-ingredients/rice.png" alt="">
+              <img src="assets/clean-ingredients/pumpkin.png" alt="" loading="lazy">
+              <img src="assets/clean-ingredients/carrot.png" alt="" loading="lazy">
+              <img src="assets/clean-ingredients/rice.png" alt="" loading="lazy">
             </div>
             <div class="form-copy"><input class="manual-field form-name" id="record-food-input" type="text" value="南瓜、胡萝卜、软饭" aria-label="今日食材"><div class="food-meta">今日食材</div></div>
             <div class="edit-hint">修改</div>
           </article>
           <article class="form-card amount-card">
-            <div class="rice-state half" aria-hidden="true"><img id="rice-state-img" src="assets/clean-rice-amount/half.png" alt=""></div>
+            <div class="rice-state half" aria-hidden="true"><img id="rice-state-img" src="assets/clean-rice-amount/half.png" alt="" loading="lazy"></div>
             <div class="form-copy">
               <div class="form-name">半碗</div>
               <div class="food-meta">分量</div>
               <div class="amount-options" aria-label="米饭食用量">
-                <button class="amount-option" type="button" data-amount="full"><img class="amount-mini" src="assets/clean-rice-amount/full.png" alt="">整碗</button>
-                <button class="amount-option active" type="button" data-amount="half"><img class="amount-mini" src="assets/clean-rice-amount/half.png" alt="">半碗</button>
-                <button class="amount-option" type="button" data-amount="empty"><img class="amount-mini" src="assets/clean-rice-amount/empty.png" alt="">空碗</button>
+                <button class="amount-option" type="button" data-amount="full"><img class="amount-mini" src="assets/clean-rice-amount/full.png" alt="" loading="lazy">整碗</button>
+                <button class="amount-option active" type="button" data-amount="half"><img class="amount-mini" src="assets/clean-rice-amount/half.png" alt="" loading="lazy">半碗</button>
+                <button class="amount-option" type="button" data-amount="empty"><img class="amount-mini" src="assets/clean-rice-amount/empty.png" alt="" loading="lazy">空碗</button>
               </div>
             </div>
           </article>
           <article class="form-card editable" data-action="edit-time">
-            <div class="field-icon" aria-hidden="true"><img class="time-img" src="assets/clean-icons/time-clock.png" alt=""></div>
+            <div class="field-icon" aria-hidden="true"><img class="time-img" src="assets/clean-icons/time-clock.png" alt="" loading="lazy"></div>
             <div class="form-copy"><button class="picker-trigger form-name" id="record-time-input" type="button" data-picker="time" data-value="10:30">上午 10:30</button><div class="food-meta">喂食时间</div></div>
             <div class="edit-hint">修改</div>
           </article>
           <div class="photo-card" id="record-photo-card" data-action="change-photo">
-            <div class="photo-card-preview"><img id="record-photo-img" src="assets/clean-ingredients/rice.png" alt="今日辅食照片"></div>
+            <div class="photo-card-preview"><img id="record-photo-img" src="assets/clean-ingredients/rice.png" alt="今日辅食照片" loading="lazy"></div>
             <div class="photo-empty">
               <div class="photo-icon-box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14.5 4 16 7h3a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h3l1.5-3h5Z"/><circle cx="12" cy="13" r="3"/></svg></div>
               <div class="photo-card-text"><div class="form-name">上传辅食照片</div><div class="food-meta">直接选择，上传后原位展示。</div></div>
@@ -2020,12 +2031,12 @@
         </div>
         <div class="record-list">
           <article class="record-card" data-open="record-detail-screen">
-            <div class="record-photo" aria-hidden="true"><img src="assets/clean-ingredients/rice.png" alt=""><span>今天</span></div>
+            <div class="record-photo" aria-hidden="true"><img src="assets/clean-ingredients/rice.png" alt="" loading="lazy"><span>今天</span></div>
             <div class="record-copy"><div class="record-name">南瓜胡萝卜软饭</div><div class="record-meta">半碗，接受度好</div></div>
             <button class="love" type="button" aria-pressed="true" aria-label="取消宝宝喜欢"><svg viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg></button>
           </article>
           <article class="record-card" data-open="record-detail-screen">
-            <div class="record-photo" aria-hidden="true"><img src="assets/clean-ingredients/noodles.png" alt=""><span>昨天</span></div>
+            <div class="record-photo" aria-hidden="true"><img src="assets/clean-ingredients/noodles.png" alt="" loading="lazy"><span>昨天</span></div>
             <div class="record-copy"><div class="record-name">番茄鸡蛋软面</div><div class="record-meta">少油少盐，嘟嘟喜欢</div></div>
             <button class="love" type="button" aria-pressed="true" aria-label="取消宝宝喜欢"><svg viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg></button>
           </article>
@@ -2044,7 +2055,7 @@
         </header>
         <article class="detail-hero">
           <div class="detail-main">
-            <img class="hero-food" src="assets/clean-ingredients/rice.png" alt="">
+            <img class="hero-food" src="assets/clean-ingredients/rice.png" alt="" loading="lazy">
             <div>
               <div class="detail-title">南瓜胡萝卜软饭</div>
               <p class="food-meta">适合一岁+，软烂小块，少油少盐。</p>
@@ -2084,7 +2095,7 @@
         </header>
         <article class="detail-hero">
           <div class="detail-main">
-            <img class="hero-food" src="assets/clean-ingredients/carrot.png" alt="">
+            <img class="hero-food" src="assets/clean-ingredients/carrot.png" alt="" loading="lazy">
             <div><div class="detail-title">胡萝卜</div><p class="food-meta">建议优先使用，适合搭配主食和南瓜。</p></div>
           </div>
           <div class="chips"><span class="chip">购入第4天</span><span class="chip">冷藏</span><span class="chip">还剩2天</span></div>
@@ -2098,8 +2109,8 @@
         <section class="info-panel">
           <div class="panel-title">可搭配辅食</div>
           <div class="panel-list">
-            <div class="mini-record"><img class="ingredient-img" src="assets/clean-ingredients/rice.png" alt=""><div><div class="food-name">胡萝卜南瓜软饭</div><p class="food-meta">软烂小块，适合一岁+</p></div></div>
-            <div class="mini-record"><img class="ingredient-img" src="assets/clean-ingredients/noodles.png" alt=""><div><div class="food-name">胡萝卜鸡蛋软面</div><p class="food-meta">清淡易入口</p></div></div>
+            <div class="mini-record"><img class="ingredient-img" src="assets/clean-ingredients/rice.png" alt="" loading="lazy"><div><div class="food-name">胡萝卜南瓜软饭</div><p class="food-meta">软烂小块，适合一岁+</p></div></div>
+            <div class="mini-record"><img class="ingredient-img" src="assets/clean-ingredients/noodles.png" alt="" loading="lazy"><div><div class="food-name">胡萝卜鸡蛋软面</div><p class="food-meta">清淡易入口</p></div></div>
           </div>
         </section>
         <div class="sub-actions"><button class="main-button" type="button" data-open="recipe-detail-screen">用它做辅食</button><button class="ghost-button" type="button" data-action="use-up-ingredient">标记用完</button></div>
@@ -2128,11 +2139,11 @@
         </header>
         <article class="detail-hero">
           <div class="detail-main">
-            <img class="feedback-mood" src="assets/baby-moods/happy.png" alt="">
+            <img class="feedback-mood" src="assets/baby-moods/happy.png" alt="" loading="lazy">
             <div><div class="detail-title">今天很开心</div><p class="food-meta">吃饭状态稳定，接受度好。</p></div>
           </div>
         </article>
-        <div class="photo-preview"><div><img src="assets/clean-ingredients/rice.png" alt=""><div class="food-name">南瓜胡萝卜软饭</div></div></div>
+        <div class="photo-preview"><div><img src="assets/clean-ingredients/rice.png" alt="" loading="lazy"><div class="food-name">南瓜胡萝卜软饭</div></div></div>
         <section class="info-panel">
           <div class="panel-title">饮食内容</div>
           <div class="info-row"><strong>今日食材</strong><span>南瓜、胡萝卜、软饭</span></div>
@@ -2151,8 +2162,8 @@
         </header>
         <div class="segmented" aria-label="历史筛选"><button class="segment active" type="button" data-filter="today">今天</button><button class="segment" type="button" data-filter="week">本周</button><button class="segment" type="button" data-filter="month">本月</button></div>
         <div class="record-list history-list">
-          <article class="record-card" data-open="record-detail-screen"><div class="record-photo" aria-hidden="true"><img src="assets/clean-ingredients/rice.png" alt=""><span>今天</span></div><div class="record-copy"><div class="record-name">南瓜胡萝卜软饭</div><div class="record-meta">半碗，接受度好</div></div><img class="feedback-mood" src="assets/baby-moods/happy.png" alt=""></article>
-          <article class="record-card" data-open="record-detail-screen"><div class="record-photo" aria-hidden="true"><img src="assets/clean-ingredients/noodles.png" alt=""><span>昨天</span></div><div class="record-copy"><div class="record-name">番茄鸡蛋软面</div><div class="record-meta">半碗，嘟嘟喜欢</div></div><img class="feedback-mood" src="assets/baby-moods/normal.png" alt=""></article>
+          <article class="record-card" data-open="record-detail-screen"><div class="record-photo" aria-hidden="true"><img src="assets/clean-ingredients/rice.png" alt="" loading="lazy"><span>今天</span></div><div class="record-copy"><div class="record-name">南瓜胡萝卜软饭</div><div class="record-meta">半碗，接受度好</div></div><img class="feedback-mood" src="assets/baby-moods/happy.png" alt="" loading="lazy"></article>
+          <article class="record-card" data-open="record-detail-screen"><div class="record-photo" aria-hidden="true"><img src="assets/clean-ingredients/noodles.png" alt="" loading="lazy"><span>昨天</span></div><div class="record-copy"><div class="record-name">番茄鸡蛋软面</div><div class="record-meta">半碗，嘟嘟喜欢</div></div><img class="feedback-mood" src="assets/baby-moods/normal.png" alt="" loading="lazy"></article>
         </div>
       </section>
 
@@ -2163,8 +2174,8 @@
           <span></span>
         </header>
         <div class="food-list">
-          <article class="food-card" data-open="ingredient-detail-screen"><div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/carrot.png" alt=""></div><div class="food-copy"><div class="food-name">胡萝卜建议优先用</div><div class="food-meta">已存放4天，今天推荐加入辅食</div></div><span class="food-tag" role="note">食材</span></article>
-          <article class="food-card" data-go="record"><div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/rice.png" alt=""></div><div class="food-copy"><div class="food-name">今天还没保存记录</div><div class="food-meta">上传辅食照片后可保存今日记录</div></div><span class="food-tag" role="note">记录</span></article>
+          <article class="food-card" data-open="ingredient-detail-screen"><div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/carrot.png" alt="" loading="lazy"></div><div class="food-copy"><div class="food-name">胡萝卜建议优先用</div><div class="food-meta">已存放4天，今天推荐加入辅食</div></div><span class="food-tag" role="note">食材</span></article>
+          <article class="food-card" data-go="record"><div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/rice.png" alt="" loading="lazy"></div><div class="food-copy"><div class="food-name">今天还没保存记录</div><div class="food-meta">上传辅食照片后可保存今日记录</div></div><span class="food-tag" role="note">记录</span></article>
         </div>
       </section>
 
@@ -2200,7 +2211,7 @@
       <input id="meal-photo-input" type="file" accept="image/*" hidden>
       <div class="image-lightbox" id="image-lightbox" aria-hidden="true">
         <button class="lightbox-close" type="button" id="lightbox-close" aria-label="关闭照片预览">×</button>
-        <img id="lightbox-img" src="" alt="辅食照片放大预览">
+        <img id="lightbox-img" src="" alt="辅食照片放大预览" loading="lazy">
       </div>
       <div class="picker-mask" id="picker-mask"></div>
       <section class="picker-sheet" id="picker-sheet" aria-label="日期时间选择器">
@@ -2463,7 +2474,7 @@
         item.classList.toggle('active', item.dataset.target === target);
       });
       const tabbar = document.querySelector('.tabbar');
-      if (tabbar) tabbar.classList.toggle('hidden', target !== 'home');
+      if (tabbar) tabbar.classList.toggle('hidden', !['home', 'ingredients', 'record'].includes(target));
       if (target === 'record') resetSaveRecordButton();
       scrollActiveTop();
     }
@@ -2779,7 +2790,7 @@
       article.className = 'food-card';
       article.dataset.open = 'ingredient-detail-screen';
       article.innerHTML = `
-        <div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/${icon}.png" alt=""></div>
+        <div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/${icon}.png" alt="" loading="lazy"></div>
         <div class="food-copy"><div class="food-name">${name}</div><div class="food-meta">${dateText}，${storage}</div></div>
         <span class="food-tag" role="note">${category}</span>
       `;
