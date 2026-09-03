@@ -2,13 +2,14 @@ from pathlib import Path
 from PIL import Image
 
 
-source = Path("assets/rice-amount-icons-3d.png")
+ROOT = Path(__file__).resolve().parents[1]
+source = ROOT / "assets" / "rice-amount-icons-3d.png"
 image = Image.open(source).convert("RGBA")
 width, height = image.size
 cell_width = width // 3
 
 items = [("full", 0), ("half", 1), ("empty", 2)]
-output_dir = Path("assets/rice-amount")
+output_dir = ROOT / "assets" / "rice-amount"
 output_dir.mkdir(parents=True, exist_ok=True)
 
 for name, col in items:

@@ -2,7 +2,7 @@ from pathlib import Path
 from PIL import Image
 
 
-ROOT = Path(r"C:\Users\Windows\Documents\ChatGPT\嘟嘟今天吃什么")
+ROOT = Path(__file__).resolve().parents[1]
 TARGETS = [
     ("ingredients", "clean-ingredients", ["carrot", "pumpkin", "rice", "noodles"]),
     ("rice-amount", "clean-rice-amount", ["full", "half", "empty"]),

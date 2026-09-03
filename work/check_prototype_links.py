@@ -2,7 +2,8 @@ from pathlib import Path
 import re
 
 
-s = Path("index.html").read_text(encoding="utf-8")
+ROOT = Path(__file__).resolve().parents[1]
+s = (ROOT / "index.html").read_text(encoding="utf-8")
 ids = set(re.findall(r'id="([^"]+-screen)"', s))
 opens = re.findall(r'data-open="([^"]+)"', s)
 gos = re.findall(r'data-go="([^"]+)"', s)

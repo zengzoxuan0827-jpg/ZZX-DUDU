@@ -2,7 +2,8 @@ from pathlib import Path
 from PIL import Image
 
 
-source = Path("assets/ingredient-icons-3d.png")
+ROOT = Path(__file__).resolve().parents[1]
+source = ROOT / "assets" / "ingredient-icons-3d.png"
 image = Image.open(source).convert("RGBA")
 width, height = image.size
 cell_width, cell_height = width // 4, height // 2
@@ -18,7 +19,7 @@ items = [
     ("sweet-potato", 3, 1),
 ]
 
-output_dir = Path("assets/ingredients")
+output_dir = ROOT / "assets" / "ingredients"
 output_dir.mkdir(parents=True, exist_ok=True)
 
 for name, col, row in items:

@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>嘟嘟今天吃什么</title>
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
   <style>
     :root {
       --theme: #ffc928;
@@ -307,11 +308,11 @@
     .recipe-row {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 10px;
     }
 
     .mood-blob {
-      width: 128px;
+      width: 122px;
       height: 112px;
       flex: 0 0 auto;
       display: grid;
@@ -779,6 +780,11 @@
 
     .form-card.editable {
       cursor: pointer;
+      align-items: flex-start;
+    }
+
+    .form-card {
+      align-items: flex-start;
     }
 
     .edit-hint {
@@ -786,6 +792,8 @@
       font-size: 12px;
       font-weight: 800;
       white-space: nowrap;
+      align-self: flex-start;
+      margin-top: 2px;
     }
 
     .amount-card {
@@ -984,7 +992,7 @@
       border: 0;
       background: var(--card);
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 13px;
       text-align: left;
       color: var(--theme-deep);
@@ -1114,6 +1122,8 @@
       display: none;
       cursor: pointer;
       margin-left: auto;
+      align-self: flex-start;
+      margin-top: 11px;
     }
 
     .photo-card.is-uploaded .photo-edit-button {
@@ -2369,7 +2379,20 @@
       document.querySelectorAll('.screen').forEach((screen) => {
         screen.classList.toggle('active', screen.id === screenId);
       });
+      document.querySelectorAll('.nav-item').forEach((item) => {
+        item.classList.toggle('active', screenId === `${item.dataset.target}-screen`);
+      });
       scrollActiveTop();
+    }
+
+    function showPreviewScreen() {
+      const params = new URLSearchParams(window.location.search);
+      const screenId = params.get('screen');
+      if (!screenId) return;
+      openScreen(screenId);
+      if (params.get('static') === '1') {
+        document.body.classList.add('static-shot');
+      }
     }
 
     document.querySelectorAll('.nav-item').forEach((item) => {
@@ -2794,6 +2817,7 @@
     lightboxImg.addEventListener('click', (event) => event.stopPropagation());
 
     updateBabyAge();
+    showPreviewScreen();
     setInterval(updateBabyAge, 60 * 60 * 1000);
   </script>
 </body>

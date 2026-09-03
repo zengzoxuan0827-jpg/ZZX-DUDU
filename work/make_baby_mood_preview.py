@@ -2,7 +2,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 
-ROOT = Path(r"C:\Users\Windows\Documents\ChatGPT\嘟嘟今天吃什么")
+ROOT = Path(__file__).resolve().parents[1]
 BABY_SHEET = Path(r"C:\Users\Windows\AppData\Local\Temp\codex-clipboard-2106a0c1-6609-4e31-ad58-b86e85bb7b60.png")
 OUT = ROOT / "assets" / "previews" / "mood-card-baby-preview.png"
 
@@ -19,6 +19,10 @@ def make_soft_cutout(img: Image.Image) -> Image.Image:
 
 
 def main() -> None:
+    if not BABY_SHEET.exists():
+        print(f"SKIP make_baby_mood_preview: source image missing: {BABY_SHEET}")
+        print("  (preserving existing assets/previews/mood-card-baby-preview.png)")
+        return
     OUT.parent.mkdir(parents=True, exist_ok=True)
 
     sheet = Image.open(BABY_SHEET)

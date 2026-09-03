@@ -1,0 +1,204 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#071f24"/>
+      <stop offset=".56" stop-color="#17343a"/>
+      <stop offset=".82" stop-color="#e7eef0"/>
+      <stop offset="1" stop-color="#ffffff"/>
+    </linearGradient>
+    <linearGradient id="phoneBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff8ec"/>
+      <stop offset="1" stop-color="#fffefd"/>
+    </linearGradient>
+    <linearGradient id="yellowCard" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff1aa"/>
+      <stop offset="1" stop-color="#fffaf0"/>
+    </linearGradient>
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="24" stdDeviation="26" flood-color="#06181c" flood-opacity=".34"/>
+    </filter>
+    <filter id="panelShadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#1d3035" flood-opacity=".16"/>
+    </filter>
+    <clipPath id="phoneClip">
+      <rect width="238" height="514" rx="30"/>
+    </clipPath>
+  </defs>
+
+  <rect width="1440" height="900" fill="url(#bg)"/>
+  <rect y="0" width="1440" height="690" fill="#09252a" opacity=".18"/>
+  <rect x="0" y="636" width="1440" height="264" rx="78" fill="#ffffff"/>
+
+  <g text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, Arial, sans-serif">
+    <text x="720" y="84" fill="#6e858b" font-size="34" font-weight="700">{</text>
+    <text x="720" y="85" fill="#ffffff" font-size="34" font-weight="900">嘟嘟今天吃什么</text>
+    <text x="924" y="84" fill="#6e858b" font-size="34" font-weight="700">}</text>
+    <text x="720" y="150" fill="#c6d3d6" font-size="17" font-weight="500">
+      面向 1-3 岁宝宝家庭的辅食决策工具，根据宝宝心情、家庭库存、临期食材和历史偏好生成今日辅食方案。
+    </text>
+    <text x="720" y="184" fill="#eef6f7" font-size="18" font-weight="800">
+      少纠结、少浪费，把日常育儿经验转化为可执行推荐。
+    </text>
+  </g>
+
+  <g transform="translate(104 235) skewY(-10) rotate(-5)" opacity=".68" filter="url(#softShadow)">
+    <use href="#phoneHome"/>
+  </g>
+  <g transform="translate(363 198) skewY(-7) rotate(-2)" opacity=".80" filter="url(#softShadow)">
+    <use href="#phoneProfile"/>
+  </g>
+  <g transform="translate(616 184)" opacity=".90" filter="url(#softShadow)">
+    <use href="#phoneRecipe"/>
+  </g>
+  <g transform="translate(877 198) skewY(7) rotate(2)" opacity=".80" filter="url(#softShadow)">
+    <use href="#phoneRecord"/>
+  </g>
+  <g transform="translate(1132 236) skewY(10) rotate(5)" opacity=".68" filter="url(#softShadow)">
+    <use href="#phoneIngredients"/>
+  </g>
+
+  <g transform="translate(72 694)" filter="url(#panelShadow)">
+    <rect width="368" height="138" rx="30" fill="#f9fbfc"/>
+    <circle cx="64" cy="69" r="34" fill="#fff2bf"/>
+    <text x="64" y="78" text-anchor="middle" fill="#f5ae16" font-family="Arial" font-size="30">♥</text>
+    <text x="122" y="62" fill="#1f2b33" font-family="PingFang SC, Microsoft YaHei" font-size="22" font-weight="900">心情驱动</text>
+    <text x="122" y="94" fill="#8d8991" font-family="PingFang SC, Microsoft YaHei" font-size="16">当日状态影响推荐策略</text>
+  </g>
+  <g transform="translate(536 694)" filter="url(#panelShadow)">
+    <rect width="368" height="138" rx="30" fill="#f9fbfc"/>
+    <circle cx="64" cy="69" r="34" fill="#fff2bf"/>
+    <text x="64" y="78" text-anchor="middle" fill="#f5ae16" font-family="Arial" font-size="30">◎</text>
+    <text x="122" y="62" fill="#1f2b33" font-family="PingFang SC, Microsoft YaHei" font-size="22" font-weight="900">库存优先</text>
+    <text x="122" y="94" fill="#8d8991" font-family="PingFang SC, Microsoft YaHei" font-size="16">优先消耗临期食材</text>
+  </g>
+  <g transform="translate(1000 694)" filter="url(#panelShadow)">
+    <rect width="368" height="138" rx="30" fill="#f9fbfc"/>
+    <circle cx="64" cy="69" r="34" fill="#fff2bf"/>
+    <text x="64" y="78" text-anchor="middle" fill="#f5ae16" font-family="Arial" font-size="30">✓</text>
+    <text x="122" y="62" fill="#1f2b33" font-family="PingFang SC, Microsoft YaHei" font-size="22" font-weight="900">一键方案</text>
+    <text x="122" y="94" fill="#8d8991" font-family="PingFang SC, Microsoft YaHei" font-size="16">从纠结到可执行菜单</text>
+  </g>
+
+  <defs>
+    <g id="phoneFrame">
+      <rect width="238" height="514" rx="30" fill="url(#phoneBg)"/>
+      <text x="24" y="32" fill="#111827" font-family="Arial" font-size="10" font-weight="700">9:41</text>
+      <circle cx="203" cy="27" r="3" fill="#6a6670"/>
+      <circle cx="214" cy="27" r="3" fill="#6a6670"/>
+      <circle cx="225" cy="27" r="3" fill="#6a6670"/>
+    </g>
+
+    <g id="tabs">
+      <rect x="0" y="456" width="238" height="58" fill="#ffffff" opacity=".92"/>
+      <text x="48" y="492" fill="#f5ae16" font-family="PingFang SC, Microsoft YaHei" font-size="11" font-weight="800">首页</text>
+      <text x="112" y="492" fill="#9b969e" font-family="PingFang SC, Microsoft YaHei" font-size="11" font-weight="800">食材</text>
+      <text x="178" y="492" fill="#9b969e" font-family="PingFang SC, Microsoft YaHei" font-size="11" font-weight="800">记录</text>
+    </g>
+
+    <g id="foodIcon">
+      <ellipse cx="0" cy="12" rx="28" ry="14" fill="#fff3cc"/>
+      <ellipse cx="0" cy="8" rx="24" ry="10" fill="#ffffff"/>
+      <path d="M-22 11 Q0 35 22 11" fill="#e7b86a"/>
+    </g>
+
+    <g id="babyFace">
+      <circle cx="0" cy="0" r="38" fill="#ffbf8e"/>
+      <path d="M-28 -27 Q0 -58 30 -27" fill="#15110f"/>
+      <circle cx="-15" cy="-2" r="5" fill="#111111"/>
+      <circle cx="15" cy="-2" r="5" fill="#111111"/>
+      <path d="M-13 18 Q0 28 15 18" fill="none" stroke="#63311f" stroke-width="3" stroke-linecap="round"/>
+    </g>
+
+    <g id="phoneHome">
+      <use href="#phoneFrame"/>
+      <g clip-path="url(#phoneClip)">
+        <circle cx="44" cy="76" r="22" fill="#ffcfdb"/>
+        <text x="78" y="72" fill="#25222a" font-family="PingFang SC, Microsoft YaHei" font-size="18" font-weight="900">嘟嘟今天吃什么</text>
+        <text x="80" y="93" fill="#f5ae16" font-family="PingFang SC, Microsoft YaHei" font-size="11" font-weight="800">1岁3个月</text>
+        <rect x="16" y="122" width="206" height="142" rx="22" fill="url(#yellowCard)"/>
+        <g transform="translate(70 177) scale(.92)"><use href="#babyFace"/></g>
+        <text x="132" y="166" fill="#25222a" font-family="PingFang SC, Microsoft YaHei" font-size="18" font-weight="900">9月1日 星期二</text>
+        <text x="132" y="192" fill="#8d8991" font-family="PingFang SC, Microsoft YaHei" font-size="11">头像跟随心情变化</text>
+        <rect x="28" y="280" width="45" height="42" rx="14" fill="#ffc928"/>
+        <rect x="82" y="280" width="45" height="42" rx="14" fill="#ffffff"/>
+        <rect x="136" y="280" width="45" height="42" rx="14" fill="#ffffff"/>
+        <rect x="190" y="280" width="34" height="42" rx="14" fill="#ffffff"/>
+        <text x="51" y="306" text-anchor="middle" fill="#3c2b00" font-family="PingFang SC, Microsoft YaHei" font-size="10" font-weight="800">开心</text>
+        <text x="104" y="306" text-anchor="middle" fill="#34333a" font-family="PingFang SC, Microsoft YaHei" font-size="10" font-weight="800">难过</text>
+        <rect x="16" y="354" width="206" height="90" rx="22" fill="#ffffff"/>
+        <g transform="translate(56 392) scale(.72)"><use href="#foodIcon"/></g>
+        <text x="95" y="388" fill="#25222a" font-family="PingFang SC, Microsoft YaHei" font-size="15" font-weight="900">南瓜胡萝卜软饭</text>
+        <text x="96" y="411" fill="#8d8991" font-family="PingFang SC, Microsoft YaHei" font-size="10">库存优先，少油少盐</text>
+      </g>
+      <use href="#tabs"/>
+    </g>
+
+    <g id="phoneProfile">
+      <use href="#phoneFrame"/>
+      <text x="84" y="72" fill="#25222a" font-family="PingFang SC, Microsoft YaHei" font-size="20" font-weight="900">宝宝资料</text>
+      <rect x="16" y="96" width="206" height="94" rx="22" fill="#ffffff"/>
+      <circle cx="56" cy="143" r="28" fill="#ffcfdb"/>
+      <text x="94" y="139" fill="#25222a" font-family="PingFang SC, Microsoft YaHei" font-size="18" font-weight="900">嘟嘟</text>
+      <text x="94" y="160" fill="#8d8991" font-family="PingFang SC, Microsoft YaHei" font-size="12">1岁3个月</text>
+      <rect x="16" y="208" width="206" height="112" rx="22" fill="#ffffff"/>
+      <text x="32" y="240" fill="#25222a" font-family="PingFang SC, Microsoft YaHei" font-size="14" font-weight="900">基础资料</text>
+      <text x="32" y="275" fill="#25222a" font-family="PingFang SC, Microsoft YaHei" font-size="12">出生日期</text>
+      <text x="144" y="275" fill="#25222a" font-family="Arial" font-size="12" font-weight="700">2025-06-01</text>
+      <rect x="16" y="338" width="206" height="78" rx="22" fill="#ffffff"/>
+      <text x="32" y="368" fill="#25222a" font-family="PingFang SC, Microsoft YaHei" font-size="14" font-weight="900">偏好信息</text>
+      <rect x="32" y="384" width="52" height="24" rx="9" fill="#fff2bf"/>
+      <rect x="92" y="384" width="52" height="24" rx="9" fill="#fff2bf"/>
+    </g>
+
+    <g id="phoneRecipe">
+      <use href="#phoneFrame"/>
+      <text x="76" y="72" fill="#25222a" font-family="PingFang SC, Microsoft YaHei" font-size="20" font-weight="900">今日辅食</text>
+      <rect x="16" y="98" width="206" height="118" rx="24" fill="#ffffff"/>
+      <g transform="translate(60 145) scale(.72)"><use href="#foodIcon"/></g>
+      <text x="92" y="134" fill="#25222a" font-family="PingFang SC, Microsoft YaHei" font-size="16" font-weight="900">南瓜胡萝卜软饭</text>
+      <text x="92" y="158" fill="#8d8991" font-family="PingFang SC, Microsoft YaHei" font-size="10">适合一岁+，软烂小块</text>
+      <rect x="16" y="234" width="206" height="98" rx="22" fill="#ffffff"/>
+      <text x="32" y="264" fill="#25222a" font-family="PingFang SC, Microsoft YaHei" font-size="14" font-weight="900">推荐理由</text>
+      <text x="32" y="292" fill="#25222a" font-family="PingFang SC, Microsoft YaHei" font-size="12">库存</text>
+      <text x="112" y="292" fill="#8d8991" font-family="PingFang SC, Microsoft YaHei" font-size="10">胡萝卜优先用</text>
+      <rect x="16" y="350" width="206" height="92" rx="22" fill="#ffffff"/>
+      <text x="32" y="378" fill="#25222a" font-family="PingFang SC, Microsoft YaHei" font-size="14" font-weight="900">做法步骤</text>
+      <circle cx="38" cy="404" r="9" fill="#ffc928"/>
+      <text x="54" y="408" fill="#8d8991" font-family="PingFang SC, Microsoft YaHei" font-size="10">蒸熟切碎，拌入软饭。</text>
+    </g>
+
+    <g id="phoneRecord">
+      <use href="#phoneFrame"/>
+      <text x="32" y="72" fill="#8d8991" font-family="PingFang SC, Microsoft YaHei" font-size="12">今天吃过什么</text>
+      <text x="32" y="98" fill="#25222a" font-family="PingFang SC, Microsoft YaHei" font-size="22" font-weight="900">记录</text>
+      <rect x="16" y="124" width="206" height="72" rx="22" fill="#ffffff"/>
+      <g transform="translate(52 152) scale(.58)"><use href="#foodIcon"/></g>
+      <text x="86" y="150" fill="#25222a" font-family="PingFang SC, Microsoft YaHei" font-size="14" font-weight="900">南瓜、胡萝卜、软饭</text>
+      <text x="86" y="172" fill="#8d8991" font-family="PingFang SC, Microsoft YaHei" font-size="10">今日食材</text>
+      <rect x="16" y="212" width="206" height="72" rx="22" fill="#ffffff"/>
+      <text x="86" y="244" fill="#25222a" font-family="PingFang SC, Microsoft YaHei" font-size="15" font-weight="900">小半碗</text>
+      <rect x="16" y="300" width="206" height="72" rx="22" fill="#ffffff"/>
+      <text x="86" y="332" fill="#25222a" font-family="PingFang SC, Microsoft YaHei" font-size="15" font-weight="900">上午 10:30</text>
+      <rect x="16" y="390" width="206" height="42" rx="15" fill="#ffc928"/>
+      <text x="119" y="416" text-anchor="middle" fill="#3c2b00" font-family="PingFang SC, Microsoft YaHei" font-size="13" font-weight="900">保存今日记录</text>
+      <use href="#tabs"/>
+    </g>
+
+    <g id="phoneIngredients">
+      <use href="#phoneFrame"/>
+      <text x="32" y="72" fill="#8d8991" font-family="PingFang SC, Microsoft YaHei" font-size="12">库存与推荐</text>
+      <text x="32" y="98" fill="#25222a" font-family="PingFang SC, Microsoft YaHei" font-size="22" font-weight="900">食材</text>
+      <rect x="16" y="124" width="206" height="126" rx="22" fill="#ffffff"/>
+      <g transform="translate(54 164) scale(.68)"><use href="#foodIcon"/></g>
+      <text x="90" y="158" fill="#25222a" font-family="PingFang SC, Microsoft YaHei" font-size="15" font-weight="900">今日推荐</text>
+      <text x="90" y="181" fill="#8d8991" font-family="PingFang SC, Microsoft YaHei" font-size="10">临期胡萝卜优先</text>
+      <rect x="28" y="210" width="182" height="28" rx="12" fill="#ffc928"/>
+      <text x="119" y="229" text-anchor="middle" fill="#3c2b00" font-family="PingFang SC, Microsoft YaHei" font-size="11" font-weight="900">换一组辅食</text>
+      <rect x="16" y="284" width="206" height="66" rx="20" fill="#ffffff"/>
+      <text x="84" y="322" fill="#25222a" font-family="PingFang SC, Microsoft YaHei" font-size="14" font-weight="900">胡萝卜</text>
+      <rect x="16" y="362" width="206" height="66" rx="20" fill="#ffffff"/>
+      <text x="84" y="400" fill="#25222a" font-family="PingFang SC, Microsoft YaHei" font-size="14" font-weight="900">南瓜</text>
+      <use href="#tabs"/>
+    </g>
+  </defs>
+</svg>

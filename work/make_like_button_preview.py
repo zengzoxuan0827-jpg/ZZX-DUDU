@@ -2,7 +2,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
 
-ROOT = Path(r"C:\Users\Windows\Documents\ChatGPT\嘟嘟今天吃什么")
+ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "assets" / "previews" / "like-button-preview.png"
 
 

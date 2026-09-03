@@ -2,7 +2,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 
-ROOT = Path(r"C:\Users\Windows\Documents\ChatGPT\嘟嘟今天吃什么")
+ROOT = Path(__file__).resolve().parents[1]
 BABY = Path(r"C:\Users\Windows\AppData\Local\Temp\codex-clipboard-b6e96c1a-e840-4c00-85a8-ea3b6d71896f.png")
 OUT = ROOT / "assets" / "previews" / "icon-transparent-scale-preview.png"
 
@@ -79,6 +79,10 @@ def rounded_card(draw: ImageDraw.ImageDraw, xy, radius, fill):
 
 
 def main() -> None:
+    if not BABY.exists():
+        print(f"SKIP make_icon_adjustment_preview: source image missing: {BABY}")
+        print("  (preserving existing assets/previews/icon-transparent-scale-preview.png)")
+        return
     OUT.parent.mkdir(parents=True, exist_ok=True)
     canvas = Image.new("RGBA", (760, 560), (255, 246, 234, 255))
     draw = ImageDraw.Draw(canvas)

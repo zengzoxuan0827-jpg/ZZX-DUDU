@@ -2,7 +2,8 @@ from pathlib import Path
 from PIL import Image
 
 
-source = Path("assets/mood-icons-jelly.png")
+ROOT = Path(__file__).resolve().parents[1]
+source = ROOT / "assets" / "mood-icons-jelly.png"
 image = Image.open(source).convert("RGBA")
 width, height = image.size
 cell_width, cell_height = width // 2, height // 2
@@ -14,7 +15,7 @@ items = [
     ("normal", 1, 1),
 ]
 
-output_dir = Path("assets/moods")
+output_dir = ROOT / "assets" / "moods"
 output_dir.mkdir(parents=True, exist_ok=True)
 
 for name, col, row in items:

@@ -4,7 +4,7 @@ from pathlib import Path
 from PIL import Image
 
 
-ROOT = Path(r"C:\Users\Windows\Documents\ChatGPT\嘟嘟今天吃什么")
+ROOT = Path(__file__).resolve().parents[1]
 SRC_DIR = ROOT / "assets" / "rice-amount"
 OUT_DIR = ROOT / "assets" / "clean-rice-amount"
 NAMES = ("full", "half", "empty")

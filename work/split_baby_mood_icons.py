@@ -2,7 +2,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFilter
 
 
-ROOT = Path(r"C:\Users\Windows\Documents\ChatGPT\嘟嘟今天吃什么")
+ROOT = Path(__file__).resolve().parents[1]
 SOURCE = Path(r"C:\Users\Windows\AppData\Local\Temp\codex-clipboard-2106a0c1-6609-4e31-ad58-b86e85bb7b60.png")
 OUT_DIR = ROOT / "assets" / "baby-moods"
 
@@ -39,6 +39,10 @@ def crop_face(sheet: Image.Image, box: tuple[int, int, int, int]) -> Image.Image
 
 
 def main() -> None:
+    if not SOURCE.exists():
+        print(f"SKIP split_baby_mood_icons: source sheet missing: {SOURCE}")
+        print("  (preserving existing assets/baby-moods/*.png from a prior run)")
+        return
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     sheet = Image.open(SOURCE)
     w, h = sheet.size
