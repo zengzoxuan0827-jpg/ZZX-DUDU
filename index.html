@@ -4,1710 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>嘟嘟今天吃什么</title>
-  <style>
-    :root {
-      --theme: #ffc928;
-      --theme-deep: #f5ae16;
-      --theme-soft: #fff2bf;
-      --bg: #fff4e8;
-      --phone: #fffefd;
-      --card: #ffffff;
-      --text: #34333a;
-      --muted: #8d8991;
-      --line: #f0ebe4;
-      --shadow: 0 24px 60px rgba(221, 154, 72, .20);
-      --soft-shadow: 0 12px 28px rgba(72, 57, 33, .08);
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "PingFang SC", "Microsoft YaHei", sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at 18% 8%, rgba(255, 255, 255, .9), transparent 22%),
-        radial-gradient(circle at 86% 18%, rgba(255, 217, 128, .34), transparent 28%),
-        linear-gradient(135deg, #fff8f0 0%, var(--bg) 100%);
-      display: grid;
-      place-items: center;
-      padding: 24px;
-    }
-
-    .showcase {
-      width: min(1180px, 100%);
-      display: grid;
-      grid-template-columns: 390px 1fr;
-      align-items: center;
-      gap: 52px;
-    }
-
-    .brand-copy {
-      display: grid;
-      gap: 18px;
-    }
-
-    .brand-copy h1 {
-      margin: 0;
-      font-size: 44px;
-      line-height: 1.08;
-      font-weight: 700;
-      letter-spacing: 0;
-    }
-
-    .brand-copy p {
-      width: min(480px, 100%);
-      margin: 0;
-      color: var(--muted);
-      font-size: 17px;
-      line-height: 1.8;
-    }
-
-    .brand-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .brand-tags span {
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, .7);
-      box-shadow: var(--soft-shadow);
-      color: #69646c;
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .phone {
-      width: min(390px, 100%);
-      height: 812px;
-      border-radius: 44px;
-      background: var(--phone);
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(255, 255, 255, .85);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-    }
-
-    .phone::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background:
-        radial-gradient(circle at 85% 13%, rgba(255, 201, 40, .15), transparent 24%),
-        radial-gradient(circle at 18% 40%, rgba(255, 201, 40, .08), transparent 24%);
-    }
-
-    .status {
-      height: 42px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 24px 0;
-      font-size: 13px;
-      font-weight: 700;
-      position: relative;
-      z-index: 1;
-    }
-
-    .signal {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .signal span {
-      display: block;
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: currentColor;
-      opacity: .75;
-    }
-
-    .screen {
-      display: none;
-      flex: 1;
-      padding: 16px 22px 0;
-      overflow-y: auto;
-      position: relative;
-      z-index: 1;
-    }
-
-    .screen.active {
-      display: block;
-    }
-
-    .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 18px;
-    }
-
-    .hello {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .baby-photo {
-      width: 52px;
-      height: 52px;
-      border: 0;
-      border-radius: 19px;
-      background: linear-gradient(145deg, #ffe27a, #ff98ba);
-      display: grid;
-      place-items: center;
-      color: #3d2700;
-      font-size: 24px;
-      font-weight: 800;
-      box-shadow: 0 10px 20px rgba(255, 174, 22, .26);
-      overflow: hidden;
-      cursor: pointer;
-    }
-
-    .hello-profile {
-      border: 0;
-      padding: 0;
-      background: transparent;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-align: left;
-      font: inherit;
-      cursor: pointer;
-    }
-
-    .baby-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: none;
-    }
-
-    .baby-photo.has-photo span {
-      display: none;
-    }
-
-    .baby-photo.has-photo img {
-      display: block;
-    }
-
-    .eyebrow {
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 600;
-      margin-bottom: 3px;
-    }
-
-    .baby-age {
-      margin-top: 5px;
-      color: var(--theme-deep);
-      font-size: 12px;
-      font-weight: 800;
-    }
-
-    .profile-avatar {
-      width: 82px;
-      height: 82px;
-      border: 0;
-      border-radius: 28px;
-      background: linear-gradient(145deg, #ffe27a, #ff98ba);
-      color: #3d2700;
-      display: grid;
-      place-items: center;
-      flex: 0 0 auto;
-      overflow: hidden;
-      font: inherit;
-      font-size: 30px;
-      font-weight: 900;
-      cursor: pointer;
-      box-shadow: var(--soft-shadow);
-    }
-
-    .profile-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: none;
-    }
-
-    .profile-avatar.has-photo span,
-    .baby-photo.has-photo span {
-      display: none;
-    }
-
-    .profile-avatar.has-photo img,
-    .baby-photo.has-photo img {
-      display: block;
-    }
-
-    h2 {
-      margin: 0;
-      font-size: 25px;
-      line-height: 1.16;
-      letter-spacing: 0;
-    }
-
-    .top-title {
-      display: block;
-      margin: 0;
-      color: var(--text);
-      font-size: 25px;
-      font-weight: 900;
-      line-height: 1.16;
-      letter-spacing: 0;
-    }
-
-    h3 {
-      margin: 0;
-      font-size: 19px;
-      line-height: 1.2;
-    }
-
-    .icon-button {
-      width: 50px;
-      height: 50px;
-      border: 0;
-      border-radius: 19px;
-      background: var(--card);
-      color: var(--theme-deep);
-      display: grid;
-      place-items: center;
-      box-shadow: var(--soft-shadow);
-      cursor: pointer;
-    }
-
-    .icon-button svg,
-    .main-button svg {
-      width: 24px;
-      height: 24px;
-      stroke-width: 2.4;
-    }
-
-    .mood-hero,
-    .recipe-hero {
-      border-radius: 30px;
-      padding: 18px;
-      background: linear-gradient(135deg, var(--theme-soft), #fffaf0 70%);
-      box-shadow: var(--soft-shadow);
-      display: grid;
-      gap: 16px;
-    }
-
-    .mood-row,
-    .recipe-row {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .mood-blob {
-      width: 128px;
-      height: 112px;
-      flex: 0 0 auto;
-      display: grid;
-      place-items: center;
-    }
-
-    .mood-blob img {
-      width: 124px;
-      height: 124px;
-      object-fit: contain;
-      display: block;
-    }
-
-    .mood-copy {
-      min-width: 0;
-    }
-
-    .mood-date {
-      color: var(--theme-deep);
-      font-size: 12px;
-      font-weight: 800;
-      margin-bottom: 5px;
-    }
-
-    .mood-copy strong,
-    .recipe-copy strong {
-      display: block;
-      font-size: 24px;
-      line-height: 1.18;
-      margin-bottom: 7px;
-    }
-
-    .mood-copy p,
-    .recipe-copy p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.55;
-    }
-
-    .mood-options {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
-    }
-
-    .mood-option {
-      border: 0;
-      border-radius: 18px;
-      min-height: 54px;
-      background: rgba(255, 255, 255, .74);
-      color: var(--text);
-      font: inherit;
-      font-size: 13px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .mood-option.active {
-      background: var(--theme);
-      color: #3c2b00;
-    }
-
-    .mood-title-date {
-      display: block;
-      color: var(--text);
-      font-size: 20px;
-      font-weight: 900;
-      line-height: 1.18;
-      margin-bottom: 7px;
-      white-space: nowrap;
-    }
-
-    .section-title {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin: 24px 2px 12px;
-    }
-
-    .section-title button {
-      border: 0;
-      background: transparent;
-      color: var(--theme-deep);
-      font: inherit;
-      font-size: 13px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .dish-card,
-    .food-card,
-    .record-card,
-    .form-card {
-      border-radius: 28px;
-      background: var(--card);
-      box-shadow: var(--soft-shadow);
-    }
-
-    .dish-card {
-      padding: 16px;
-      display: grid;
-      gap: 14px;
-    }
-
-    .dish-main {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .food-art {
-      width: 72px;
-      height: 72px;
-      flex: 0 0 auto;
-      display: grid;
-      place-items: center;
-      position: relative;
-    }
-
-    .dish-icon {
-      width: 70px;
-      height: 70px;
-      object-fit: contain;
-      display: block;
-    }
-
-    .bowl {
-      width: 78px;
-      height: 55px;
-      border-radius: 12px 12px 30px 30px;
-      background: linear-gradient(145deg, #ffd986, #e9a94f);
-      position: relative;
-      box-shadow: inset -8px -6px 12px rgba(181, 102, 20, .16);
-    }
-
-    .bowl::before {
-      content: "";
-      position: absolute;
-      left: 4px;
-      right: 4px;
-      top: -12px;
-      height: 24px;
-      border-radius: 50%;
-      background: radial-gradient(circle, #fff6d7 0 34%, #ffe19b 35% 100%);
-      box-shadow: inset 0 -5px 8px rgba(207, 151, 55, .18);
-    }
-
-    .bowl::after {
-      content: "";
-      position: absolute;
-      left: 19px;
-      top: -3px;
-      width: 39px;
-      height: 15px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #ffb13b, #ef7737);
-      opacity: .9;
-    }
-
-    .carrot,
-    .pumpkin,
-    .rice,
-    .noodle,
-    .tomato,
-    .egg {
-      position: relative;
-      width: 68px;
-      height: 68px;
-    }
-
-    .carrot::before {
-      content: "";
-      position: absolute;
-      left: 19px;
-      top: 14px;
-      width: 34px;
-      height: 48px;
-      border-radius: 28px 28px 34px 34px;
-      background: linear-gradient(145deg, #ffb64b, #f46d31);
-      transform: rotate(-18deg);
-      box-shadow: inset -7px -8px 10px rgba(173, 66, 18, .18);
-    }
-
-    .carrot::after {
-      content: "";
-      position: absolute;
-      left: 23px;
-      top: 4px;
-      width: 34px;
-      height: 24px;
-      border-radius: 18px 18px 4px 4px;
-      background: linear-gradient(145deg, #7fd95f, #31a93e);
-      clip-path: polygon(18% 100%, 30% 8%, 50% 75%, 72% 4%, 82% 100%);
-    }
-
-    .pumpkin {
-      border-radius: 45% 47% 42% 45%;
-      background:
-        radial-gradient(circle at 32% 28%, rgba(255, 255, 255, .45), transparent 16%),
-        linear-gradient(145deg, #ffc14b, #ef7e2c);
-      box-shadow: inset -8px -9px 12px rgba(172, 81, 18, .18);
-    }
-
-    .pumpkin::before {
-      content: "";
-      position: absolute;
-      left: 30px;
-      top: -9px;
-      width: 14px;
-      height: 20px;
-      border-radius: 9px;
-      background: linear-gradient(145deg, #75bd52, #358e3c);
-      transform: rotate(17deg);
-    }
-
-    .pumpkin::after {
-      content: "";
-      position: absolute;
-      inset: 8px 18px;
-      border-left: 3px solid rgba(164, 76, 21, .18);
-      border-right: 3px solid rgba(164, 76, 21, .18);
-      border-radius: 50%;
-    }
-
-    .rice {
-      border-radius: 18px 18px 24px 24px;
-      background: linear-gradient(145deg, #ffd38b, #e4a853);
-    }
-
-    .rice::before {
-      content: "";
-      position: absolute;
-      left: 7px;
-      right: 7px;
-      top: -6px;
-      height: 23px;
-      border-radius: 50%;
-      background:
-        radial-gradient(ellipse at 20% 50%, #fff 0 13%, transparent 14%),
-        radial-gradient(ellipse at 42% 40%, #fff 0 13%, transparent 14%),
-        radial-gradient(ellipse at 63% 55%, #fff 0 13%, transparent 14%),
-        radial-gradient(ellipse at 78% 42%, #fff 0 13%, transparent 14%),
-        #fff0c4;
-    }
-
-    .noodle::before {
-      content: "";
-      position: absolute;
-      inset: 9px 3px 16px;
-      border-radius: 48% 52% 44% 56%;
-      background:
-        repeating-radial-gradient(ellipse at 50% 50%, transparent 0 8px, rgba(220, 157, 49, .55) 9px 11px),
-        linear-gradient(145deg, #ffe7a8, #ffc767);
-    }
-
-    .tomato {
-      border-radius: 50%;
-      background:
-        radial-gradient(circle at 34% 28%, rgba(255, 255, 255, .6), transparent 17%),
-        linear-gradient(145deg, #ff6b55, #df2f29);
-    }
-
-    .tomato::before {
-      content: "";
-      position: absolute;
-      left: 22px;
-      top: -4px;
-      width: 28px;
-      height: 18px;
-      background: #4fb449;
-      clip-path: polygon(50% 0, 61% 39%, 100% 24%, 72% 55%, 89% 95%, 52% 70%, 17% 95%, 30% 55%, 0 24%, 39% 39%);
-    }
-
-    .egg::before {
-      content: "";
-      position: absolute;
-      inset: 8px;
-      border-radius: 50% 50% 45% 45%;
-      background: linear-gradient(145deg, #fffefa, #f0e7da);
-      box-shadow: inset -6px -7px 12px rgba(185, 172, 143, .18);
-    }
-
-    .egg::after {
-      content: "";
-      position: absolute;
-      left: 25px;
-      top: 28px;
-      width: 21px;
-      height: 21px;
-      border-radius: 50%;
-      background: linear-gradient(145deg, #ffd657, #f5a51d);
-    }
-
-    .dish-copy {
-      min-width: 0;
-    }
-
-    .dish-copy strong {
-      display: block;
-      font-size: 21px;
-      line-height: 1.22;
-      margin-bottom: 6px;
-    }
-
-    .dish-copy p,
-    .food-meta,
-    .record-meta,
-    .step {
-      margin: 0;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.5;
-    }
-
-    .chips {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .chip {
-      padding: 8px 11px;
-      border-radius: 999px;
-      background: var(--theme-soft);
-      color: #5c4a15;
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    .category-toggle {
-      border: 0;
-      min-height: 32px;
-      border-radius: 999px;
-      padding: 7px 13px;
-      background: var(--theme-soft);
-      color: #5c4a15;
-      font: inherit;
-      font-size: 12px;
-      font-weight: 800;
-      cursor: pointer;
-      transition: background .18s ease, transform .18s ease, color .18s ease;
-    }
-
-    .category-toggle[aria-pressed="true"] {
-      background: var(--theme);
-      color: #3c2b00;
-      transform: translateY(-1px);
-    }
-
-    .save-link {
-      border: 0;
-      background: transparent;
-      color: var(--theme-deep);
-      font: inherit;
-      font-size: 14px;
-      font-weight: 800;
-      cursor: pointer;
-      padding: 8px 0;
-    }
-
-    .meal-times {
-      display: grid;
-      gap: 10px;
-      flex: 1;
-      min-width: 0;
-    }
-
-    .meal-time {
-      border: 0;
-      border-radius: 16px;
-      background: #fff8e8;
-      color: var(--text);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      padding: 9px 12px;
-      font: inherit;
-      font-weight: 800;
-      cursor: pointer;
-    }
-
-    .meal-time span {
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    .switch {
-      width: 50px;
-      height: 30px;
-      border: 0;
-      border-radius: 999px;
-      background: #e8e2d8;
-      padding: 3px;
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-      transition: background .18s ease;
-    }
-
-    .switch::before {
-      content: "";
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      background: #fff;
-      box-shadow: 0 3px 8px rgba(80, 61, 27, .18);
-      transition: transform .18s ease;
-    }
-
-    .switch[aria-pressed="true"] {
-      background: var(--theme);
-    }
-
-    .switch[aria-pressed="true"]::before {
-      transform: translateX(20px);
-    }
-
-    .main-button {
-      min-height: 54px;
-      border: 0;
-      border-radius: 20px;
-      background: var(--theme);
-      color: #3c2b00;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-      font: inherit;
-      font-size: 16px;
-      font-weight: 800;
-      cursor: pointer;
-      box-shadow: 0 10px 20px rgba(255, 190, 35, .25);
-    }
-
-    .main-button:disabled {
-      cursor: default;
-      opacity: .78;
-    }
-
-    .main-button.is-done,
-    .ghost-button.is-done {
-      background: var(--theme-soft);
-      color: #5c4a15;
-    }
-
-    .food-list,
-    .record-list,
-    .form-list {
-      display: grid;
-      gap: 12px;
-    }
-
-    .food-card,
-    .record-card,
-    .form-card {
-      min-height: 84px;
-      padding: 12px;
-      display: flex;
-      align-items: center;
-      gap: 13px;
-    }
-
-    .form-card.editable {
-      cursor: pointer;
-    }
-
-    .edit-hint {
-      color: var(--theme-deep);
-      font-size: 12px;
-      font-weight: 800;
-      white-space: nowrap;
-    }
-
-    .amount-card {
-      align-items: flex-start;
-    }
-
-    .food-thumb {
-      width: 54px;
-      height: 54px;
-      border-radius: 22px;
-      background: transparent;
-      display: grid;
-      place-items: center;
-      flex: 0 0 auto;
-    }
-
-    .ingredient-img {
-      width: 48px;
-      height: 48px;
-      object-fit: contain;
-      display: block;
-    }
-
-    .food-thumb .carrot,
-    .food-thumb .pumpkin,
-    .food-thumb .rice,
-    .food-thumb .tomato,
-    .food-thumb .egg {
-      width: 45px;
-      height: 45px;
-    }
-
-    .food-copy,
-    .record-copy,
-    .form-copy {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .food-name,
-    .record-name,
-    .form-name {
-      font-size: 16px;
-      font-weight: 800;
-      margin-bottom: 4px;
-    }
-
-    .food-tag {
-      padding: 7px 10px;
-      border-radius: 999px;
-      background: var(--theme);
-      color: #3c2b00;
-      font-size: 12px;
-      font-weight: 800;
-      white-space: nowrap;
-    }
-
-    .steps {
-      display: grid;
-      gap: 8px;
-      padding: 4px 0;
-    }
-
-    .step {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-    }
-
-    .step span {
-      width: 24px;
-      height: 24px;
-      border-radius: 9px;
-      background: var(--theme);
-      color: #3c2b00;
-      display: grid;
-      place-items: center;
-      flex: 0 0 auto;
-      font-weight: 800;
-      font-size: 12px;
-    }
-
-    .field-icon {
-      width: 46px;
-      height: 46px;
-      border-radius: 18px;
-      background: transparent;
-      color: var(--theme-deep);
-      display: grid;
-      place-items: center;
-      flex: 0 0 auto;
-      box-shadow: none;
-    }
-
-    .time-img {
-      width: 42px;
-      height: 42px;
-      object-fit: contain;
-      display: block;
-    }
-
-    .field-food-stack {
-      width: 52px;
-      height: 52px;
-      border-radius: 20px;
-      background: transparent;
-      position: relative;
-      flex: 0 0 auto;
-      box-shadow: none;
-    }
-
-    .field-food-stack img {
-      position: absolute;
-      object-fit: contain;
-    }
-
-    .field-food-stack img:nth-child(1) {
-      width: 34px;
-      height: 34px;
-      left: 3px;
-      bottom: 5px;
-    }
-
-    .field-food-stack img:nth-child(2) {
-      width: 36px;
-      height: 36px;
-      right: 1px;
-      top: 2px;
-    }
-
-    .field-food-stack img:nth-child(3) {
-      width: 35px;
-      height: 35px;
-      right: 5px;
-      bottom: 1px;
-    }
-
-    .rice-state {
-      width: 48px;
-      height: 48px;
-      border-radius: 19px;
-      background: transparent;
-      display: grid;
-      place-items: center;
-      position: relative;
-      flex: 0 0 auto;
-      box-shadow: none;
-    }
-
-    .rice-state img {
-      width: 44px;
-      height: 38px;
-      object-fit: contain;
-      display: block;
-    }
-
-    .amount-options {
-      display: flex;
-      gap: 7px;
-      flex-wrap: wrap;
-      margin-top: 9px;
-    }
-
-    .amount-option {
-      border: 0;
-      min-height: 30px;
-      border-radius: 999px;
-      padding: 6px 10px;
-      background: #fff8e8;
-      color: var(--muted);
-      font: inherit;
-      font-size: 12px;
-      font-weight: 800;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .amount-option.active {
-      background: var(--theme);
-      color: #3c2b00;
-    }
-
-    .amount-mini {
-      width: 20px;
-      height: 16px;
-      object-fit: contain;
-      display: block;
-      flex: 0 0 auto;
-    }
-
-    .photo-card {
-      min-height: 84px;
-      padding: 12px;
-      border-radius: 28px;
-      border: 0;
-      background: var(--card);
-      display: flex;
-      align-items: center;
-      gap: 13px;
-      text-align: left;
-      color: var(--theme-deep);
-      font-weight: 800;
-      box-shadow: var(--soft-shadow);
-      position: relative;
-      cursor: pointer;
-    }
-
-    .photo-card svg {
-      width: 28px;
-      height: 28px;
-      stroke-width: 2.4;
-    }
-
-    .record-photo {
-      width: 58px;
-      height: 58px;
-      border-radius: 20px;
-      background: #fff8e8;
-      display: grid;
-      place-items: center;
-      flex: 0 0 auto;
-      position: relative;
-      overflow: hidden;
-      box-shadow: inset 0 0 0 1px rgba(245, 174, 22, .10);
-    }
-
-    .record-photo img {
-      width: 56px;
-      height: 56px;
-      object-fit: contain;
-    }
-
-    .record-photo span {
-      position: absolute;
-      left: 6px;
-      bottom: 5px;
-      padding: 3px 6px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, .86);
-      color: #5c4a15;
-      font-size: 10px;
-      font-weight: 800;
-    }
-
-    .love {
-      width: 42px;
-      height: 42px;
-      border: 0;
-      border-radius: 16px;
-      background: var(--theme-soft);
-      color: var(--theme-deep);
-      display: grid;
-      place-items: center;
-      flex: 0 0 auto;
-      cursor: pointer;
-      padding: 0;
-    }
-
-    .photo-card.is-uploaded {
-      background: var(--card);
-    }
-
-    .photo-empty {
-      display: flex;
-      align-items: center;
-      gap: 13px;
-      flex: 1;
-      min-width: 0;
-    }
-
-    .photo-icon-box,
-    .photo-card-preview {
-      width: 58px;
-      height: 58px;
-      border-radius: 20px;
-      background: var(--theme-soft);
-      display: grid;
-      place-items: center;
-      flex: 0 0 auto;
-      overflow: hidden;
-    }
-
-    .photo-card-text {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .photo-card-preview {
-      display: none;
-    }
-
-    .photo-card.is-uploaded .photo-card-preview {
-      display: grid;
-    }
-
-    .photo-card.is-uploaded .photo-icon-box {
-      display: none;
-    }
-
-    .photo-card.is-uploaded .photo-card-text {
-      display: none;
-    }
-
-    .photo-card-preview img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .photo-card.is-uploaded .photo-card-preview {
-      cursor: zoom-in;
-    }
-
-    .photo-edit-button {
-      min-width: 50px;
-      height: 32px;
-      border: 0;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, .88);
-      color: var(--theme-deep);
-      font: inherit;
-      font-size: 12px;
-      font-weight: 800;
-      display: none;
-      cursor: pointer;
-      margin-left: auto;
-    }
-
-    .photo-card.is-uploaded .photo-edit-button {
-      display: block;
-    }
-
-    .image-lightbox {
-      position: absolute;
-      inset: 0;
-      z-index: 20;
-      display: none;
-      padding: 24px;
-      background: rgba(25, 35, 58, .62);
-      place-items: center;
-    }
-
-    .image-lightbox.show {
-      display: grid;
-    }
-
-    .image-lightbox img {
-      max-width: 100%;
-      max-height: 78%;
-      border-radius: 28px;
-      object-fit: contain;
-      background: #fff;
-    }
-
-    .lightbox-close {
-      position: absolute;
-      right: 22px;
-      top: 22px;
-      width: 46px;
-      height: 46px;
-      border: 0;
-      border-radius: 18px;
-      background: rgba(255, 255, 255, .94);
-      color: var(--text);
-      font: inherit;
-      font-size: 24px;
-      font-weight: 800;
-      cursor: pointer;
-    }
-
-    .love svg {
-      width: 22px;
-      height: 22px;
-      fill: #fff;
-      stroke: none;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .favorite-trigger[aria-pressed="true"],
-    .love[aria-pressed="true"],
-    .love.is-liked,
-    .like-pill[aria-pressed="true"],
-    .like-pill.is-liked {
-      background: var(--theme);
-      color: #ffffff;
-      border-color: transparent;
-      box-shadow: none;
-    }
-
-    .favorite-trigger[aria-pressed="true"] svg,
-    .love[aria-pressed="true"] svg,
-    .love.is-liked svg,
-    .like-pill[aria-pressed="true"] svg,
-    .like-pill.is-liked svg {
-      fill: currentColor;
-      stroke: none;
-    }
-
-    .food-card.is-used {
-      opacity: .58;
-    }
-
-    .sub-screen {
-      padding-bottom: 18px;
-      overflow-y: auto;
-    }
-
-    .back-button {
-      width: 46px;
-      height: 46px;
-      border: 0;
-      border-radius: 18px;
-      background: var(--card);
-      color: var(--theme-deep);
-      display: grid;
-      place-items: center;
-      box-shadow: var(--soft-shadow);
-      cursor: pointer;
-      flex: 0 0 auto;
-    }
-
-    .back-button svg {
-      width: 24px;
-      height: 24px;
-      stroke-width: 2.4;
-    }
-
-    .detail-hero,
-    .info-panel,
-    .photo-preview {
-      border-radius: 30px;
-      background: var(--card);
-      box-shadow: var(--soft-shadow);
-      padding: 16px;
-    }
-
-    .detail-hero {
-      display: grid;
-      gap: 14px;
-    }
-
-    .detail-main,
-    .info-row,
-    .mini-record {
-      display: flex;
-      align-items: center;
-      gap: 13px;
-    }
-
-    .hero-food {
-      width: 86px;
-      height: 86px;
-      object-fit: contain;
-      flex: 0 0 auto;
-    }
-
-    .detail-title {
-      font-size: 22px;
-      font-weight: 800;
-      margin-bottom: 6px;
-    }
-
-    .panel-list {
-      display: grid;
-      gap: 10px;
-    }
-
-    .info-panel {
-      display: grid;
-      gap: 12px;
-      margin-top: 12px;
-    }
-
-    .panel-title {
-      font-size: 17px;
-      font-weight: 800;
-    }
-
-    .info-row {
-      min-height: 46px;
-      justify-content: space-between;
-      color: var(--muted);
-      font-size: 13px;
-      border-top: 1px solid var(--line);
-      padding-top: 10px;
-    }
-
-    .info-row strong {
-      color: var(--text);
-      font-size: 15px;
-    }
-
-    .input-card {
-      min-height: 64px;
-      border-radius: 22px;
-      background: var(--card);
-      box-shadow: var(--soft-shadow);
-      padding: 12px 14px;
-      display: grid;
-      gap: 4px;
-    }
-
-    .input-label {
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    .input-value {
-      color: var(--text);
-      font-size: 16px;
-      font-weight: 800;
-    }
-
-    .manual-field {
-      width: 100%;
-      border: 0;
-      outline: 0;
-      background: transparent;
-      color: var(--text);
-      font: inherit;
-      font-size: 16px;
-      font-weight: 800;
-      padding: 0;
-    }
-
-    .manual-field::placeholder {
-      color: var(--muted);
-      font-weight: 600;
-    }
-
-    .inline-edit {
-      min-width: 64px;
-      border-radius: 10px;
-      outline: 0;
-    }
-
-    .inline-edit:focus {
-      box-shadow: 0 0 0 3px var(--theme-soft);
-    }
-
-    .segmented {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-    }
-
-    .segment {
-      min-height: 42px;
-      border: 0;
-      border-radius: 16px;
-      background: var(--card);
-      color: var(--text);
-      font: inherit;
-      font-size: 13px;
-      font-weight: 800;
-      box-shadow: var(--soft-shadow);
-    }
-
-    .segment.active {
-      background: var(--theme);
-      color: #3c2b00;
-    }
-
-    .sub-actions {
-      display: grid;
-      gap: 10px;
-      margin-top: 14px;
-    }
-
-    .ghost-button {
-      min-height: 48px;
-      border: 0;
-      border-radius: 18px;
-      background: var(--theme-soft);
-      color: #5c4a15;
-      font: inherit;
-      font-size: 15px;
-      font-weight: 800;
-      cursor: pointer;
-    }
-
-    .photo-preview {
-      height: 240px;
-      display: grid;
-      place-items: center;
-      margin-top: 12px;
-      background: linear-gradient(135deg, var(--theme-soft), #fffaf0 78%);
-      text-align: center;
-    }
-
-    .photo-preview img {
-      width: 150px;
-      height: 150px;
-      object-fit: contain;
-    }
-
-    .photo-preview.has-photo img {
-      width: 100%;
-      height: 100%;
-      max-height: 210px;
-      border-radius: 24px;
-      object-fit: cover;
-    }
-
-    .feedback-mood {
-      width: 64px;
-      height: 64px;
-      object-fit: contain;
-    }
-
-    .history-list {
-      margin-top: 14px;
-    }
-
-    .toast {
-      position: absolute;
-      left: 50%;
-      bottom: 106px;
-      transform: translateX(-50%) translateY(12px);
-      min-width: 210px;
-      max-width: calc(100% - 44px);
-      padding: 13px 16px;
-      border-radius: 999px;
-      background: rgba(52, 51, 58, .92);
-      color: #ffffff;
-      font-size: 13px;
-      font-weight: 800;
-      text-align: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity .2s ease, transform .2s ease;
-      z-index: 5;
-    }
-
-    .toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
-
-    .picker-mask {
-      position: absolute;
-      inset: 0;
-      background: rgba(30, 30, 34, .36);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity .2s ease;
-      z-index: 8;
-    }
-
-    .picker-mask.show {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .picker-sheet {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      border-radius: 28px 28px 0 0;
-      background: #ffffff;
-      transform: translateY(104%);
-      transition: transform .24s ease;
-      z-index: 9;
-      overflow: hidden;
-    }
-
-    .picker-sheet.show {
-      transform: translateY(0);
-    }
-
-    .picker-head {
-      height: 64px;
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
-      padding: 0 20px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .picker-head strong {
-      font-size: 18px;
-      font-weight: 800;
-    }
-
-    .picker-action {
-      border: 0;
-      background: transparent;
-      color: var(--theme-deep);
-      font: inherit;
-      font-size: 16px;
-      font-weight: 800;
-      cursor: pointer;
-    }
-
-    .picker-action:first-child {
-      justify-self: start;
-      color: var(--muted);
-    }
-
-    .picker-action:last-child {
-      justify-self: end;
-    }
-
-    .picker-body {
-      position: relative;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      padding: 18px 36px 28px;
-    }
-
-    .picker-body.time-mode {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .picker-body::before {
-      content: "";
-      position: absolute;
-      left: 38px;
-      right: 38px;
-      top: 86px;
-      height: 48px;
-      border-radius: 14px;
-      background: #f6f6f6;
-      pointer-events: none;
-    }
-
-    .picker-column {
-      height: 190px;
-      overflow-y: auto;
-      scroll-snap-type: y mandatory;
-      position: relative;
-      z-index: 1;
-      scrollbar-width: none;
-    }
-
-    .picker-column::-webkit-scrollbar {
-      display: none;
-    }
-
-    .picker-option {
-      height: 48px;
-      border: 0;
-      background: transparent;
-      color: #a5a2a7;
-      display: grid;
-      place-items: center;
-      width: 100%;
-      font: inherit;
-      font-size: 24px;
-      font-weight: 700;
-      scroll-snap-align: center;
-      cursor: pointer;
-    }
-
-    .picker-option.active {
-      color: var(--text);
-      font-size: 29px;
-      font-weight: 800;
-    }
-
-    .picker-trigger {
-      border: 0;
-      background: transparent;
-      color: var(--text);
-      font: inherit;
-      font-size: 16px;
-      font-weight: 800;
-      padding: 0;
-      text-align: left;
-      cursor: pointer;
-    }
-
-    .like-pill {
-      width: 40px;
-      height: 40px;
-      border: 0;
-      border-radius: 15px;
-      background: var(--theme-soft);
-      color: var(--theme-deep);
-      display: grid;
-      place-items: center;
-      flex: 0 0 auto;
-      cursor: pointer;
-      padding: 0;
-    }
-
-    .like-pill svg {
-      width: 21px;
-      height: 21px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2.2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .tabbar {
-      height: 88px;
-      padding: 10px 24px 20px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      background: rgba(255, 255, 255, .86);
-      backdrop-filter: blur(20px);
-      border-top: 1px solid rgba(240, 235, 228, .75);
-      position: relative;
-      z-index: 2;
-    }
-
-    .nav-item {
-      border: 0;
-      border-radius: 20px;
-      background: transparent;
-      color: #9b969e;
-      display: grid;
-      place-items: center;
-      gap: 3px;
-      font: inherit;
-      font-size: 12px;
-      font-weight: 800;
-      cursor: pointer;
-    }
-
-    .nav-item svg {
-      width: 38px;
-      height: 38px;
-      overflow: visible;
-    }
-
-    .nav-line {
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2.5;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .nav-base {
-      display: none;
-    }
-
-    .nav-mark {
-      fill: var(--theme);
-      opacity: 0;
-    }
-
-    .nav-item.active {
-      background: var(--theme-soft);
-      color: var(--theme-deep);
-    }
-
-    .nav-item.active svg {
-      color: var(--theme-deep);
-    }
-
-    .nav-item.active .nav-mark {
-      opacity: .9;
-    }
-
-    .nav-item:not(.active) svg {
-      color: #c0a46a;
-    }
-
-    .nav-item:not(.active) .nav-mark {
-      opacity: .16;
-    }
-
-    @media (max-width: 920px) {
-      .showcase {
-        grid-template-columns: 1fr;
-        justify-items: center;
-      }
-
-      .brand-copy {
-        order: -1;
-        text-align: center;
-        justify-items: center;
-      }
-
-      .brand-copy h1 {
-        font-size: 34px;
-      }
-    }
-
-    @media (max-width: 430px) {
-      body {
-        padding: 0;
-        background: var(--phone);
-      }
-
-      .showcase {
-        display: block;
-      }
-
-      .brand-copy {
-        display: none;
-      }
-
-      .phone {
-        width: 100vw;
-        height: 100vh;
-        border-radius: 0;
-        border: 0;
-        box-shadow: none;
-      }
-
-      .screen {
-        padding-left: 18px;
-        padding-right: 18px;
-      }
-
-      .mood-options {
-        gap: 6px;
-      }
-    }
-  </style>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <!-- Figma capture 脚本已移除：避免外部依赖与离线 404 -->
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <main class="showcase">
@@ -1717,13 +16,40 @@
         <div class="signal" aria-hidden="true"><span></span><span></span><span></span></div>
       </div>
 
-      <section class="screen active" id="home-screen" aria-label="首页">
+      <section class="screen login-screen active" id="login-screen" aria-label="手机号验证码登录">
+        <div class="login-hero" aria-hidden="true">
+          <img src="assets/login-illustration.png" alt="">
+        </div>
+
+        <form class="login-card" id="login-form">
+          <h1>欢迎回来</h1>
+          <p class="login-subtitle">用手机号验证登录，继续记录宝宝的每一餐。</p>
+
+          <div class="login-fields">
+            <label class="login-field phone-login-field">
+              <span class="login-prefix">+86</span>
+              <input id="login-phone" type="tel" inputmode="numeric" maxlength="11" placeholder="请输入手机号" autocomplete="tel">
+            </label>
+
+            <label class="login-field code-login-field">
+              <input id="login-code" type="tel" inputmode="numeric" maxlength="6" placeholder="请输入短信验证码" autocomplete="one-time-code">
+              <button class="login-code-button" id="login-send-code" type="button">获取验证码</button>
+            </label>
+          </div>
+
+          <p class="login-message" id="login-message">测试账号：手机号 1234，验证码 1234。</p>
+          <button class="login-submit" type="submit">验证登录</button>
+          <p class="login-note">登录即表示同意服务协议与隐私政策</p>
+        </form>
+      </section>
+
+      <section class="screen" id="home-screen" aria-label="首页">
         <header class="topbar">
           <div class="hello">
             <button class="hello-profile" type="button" data-open="baby-profile-screen" aria-label="查看宝宝资料">
               <span class="baby-photo">
                 <span>嘟</span>
-                <img alt="宝宝照片预览" id="baby-preview">
+                <img alt="宝宝照片预览" id="baby-preview" loading="lazy">
               </span>
               <span>
                 <span class="top-title">嘟嘟今天吃什么</span>
@@ -1738,7 +64,7 @@
 
         <div class="mood-hero">
           <div class="mood-row">
-            <div class="mood-blob" id="mood-blob"><img id="mood-icon" src="assets/baby-moods/happy.png" alt="宝宝表情"></div>
+            <div class="mood-blob" id="mood-blob"><img id="mood-icon" src="assets/baby-moods/happy.png" alt="宝宝表情" loading="lazy"></div>
             <div class="mood-copy">
               <strong class="mood-title-date" id="mood-title">9月1日 星期二</strong>
               <p id="mood-desc">头像跟随心情变化，主题色同步切换。</p>
@@ -1758,7 +84,7 @@
         </div>
         <article class="dish-card">
           <div class="dish-main">
-            <div class="food-art" aria-hidden="true"><img class="dish-icon" src="assets/clean-ingredients/rice.png" alt=""></div>
+            <div class="food-art" aria-hidden="true"><img class="dish-icon" src="assets/clean-ingredients/rice.png" alt="" loading="lazy"></div>
             <div class="dish-copy">
               <strong>南瓜胡萝卜软饭</strong>
               <p>适合一岁+，软烂小块，少油少盐。</p>
@@ -1780,12 +106,12 @@
         </div>
         <div class="food-list" id="ingredient-list">
           <article class="food-card" data-open="ingredient-detail-screen">
-            <div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/carrot.png" alt=""></div>
+            <div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/carrot.png" alt="" loading="lazy"></div>
             <div class="food-copy">
               <div class="food-name">胡萝卜</div>
               <div class="food-meta">购入第4天，还剩2天</div>
             </div>
-            <span class="food-tag">优先用</span>
+            <span class="food-tag" role="note">优先用</span>
           </article>
         </div>
       </section>
@@ -1800,7 +126,7 @@
           <div class="detail-main">
             <label class="profile-avatar" for="baby-upload" aria-label="上传宝宝照片">
               <span>嘟</span>
-              <img alt="宝宝照片预览" id="profile-baby-preview">
+              <img alt="宝宝照片预览" id="profile-baby-preview" loading="lazy">
             </label>
             <input id="baby-upload" type="file" accept="image/*" hidden>
             <div>
@@ -1842,7 +168,7 @@
         </section>
       </section>
 
-      <section class="screen" id="ingredients-screen" aria-label="食材页面">
+      <section class="screen sub-screen" id="ingredients-screen" aria-label="食材页面">
         <header class="topbar">
           <div>
             <div class="eyebrow">库存与推荐</div>
@@ -1855,7 +181,7 @@
 
         <article class="recipe-hero">
           <div class="recipe-row">
-            <div class="food-art" aria-hidden="true"><img class="dish-icon" src="assets/clean-ingredients/rice.png" alt=""></div>
+            <div class="food-art" aria-hidden="true"><img class="dish-icon" src="assets/clean-ingredients/rice.png" alt="" loading="lazy"></div>
             <div class="recipe-copy">
               <strong>南瓜胡萝卜软饭</strong>
               <p>优先使用临期胡萝卜，搭配嘟嘟喜欢的南瓜。</p>
@@ -1882,19 +208,19 @@
         </div>
         <div class="food-list">
           <article class="food-card" data-open="ingredient-detail-screen">
-            <div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/carrot.png" alt=""></div>
+            <div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/carrot.png" alt="" loading="lazy"></div>
             <div class="food-copy"><div class="food-name">胡萝卜</div><div class="food-meta">购入第4天，还剩2天</div></div>
-            <span class="food-tag">优先</span>
+            <span class="food-tag" role="note">优先</span>
           </article>
           <article class="food-card">
-            <div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/pumpkin.png" alt=""></div>
+            <div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/pumpkin.png" alt="" loading="lazy"></div>
             <div class="food-copy"><div class="food-name">南瓜</div><div class="food-meta">购入第2天，偏好高</div></div>
-            <span class="food-tag">喜欢</span>
+            <span class="food-tag" role="note">喜欢</span>
           </article>
           <article class="food-card">
-            <div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/rice.png" alt=""></div>
+            <div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/rice.png" alt="" loading="lazy"></div>
             <div class="food-copy"><div class="food-name">软饭</div><div class="food-meta">常备主食，适合混合</div></div>
-            <span class="food-tag">常用</span>
+            <span class="food-tag" role="note">常用</span>
           </article>
         </div>
 
@@ -1904,19 +230,19 @@
         </div>
         <div class="food-list">
           <article class="food-card" data-open="recipe-detail-screen">
-            <div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/rice.png" alt=""></div>
+            <div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/rice.png" alt="" loading="lazy"></div>
             <div class="food-copy"><div class="food-name">南瓜胡萝卜软饭</div><div class="food-meta">接受度高，可优先推荐</div></div>
             <button class="like-pill" type="button" aria-pressed="false" aria-label="标记宝宝喜欢"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.2-9-8.8a5 5 0 0 1 8-4.9 5 5 0 0 1 8 4.9C19 15.8 12 20 12 20Z"/></svg></button>
           </article>
           <article class="food-card" data-open="recipe-detail-screen">
-            <div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/noodles.png" alt=""></div>
+            <div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/noodles.png" alt="" loading="lazy"></div>
             <div class="food-copy"><div class="food-name">番茄鸡蛋软面</div><div class="food-meta">常吃搭配，适合状态一般时</div></div>
             <button class="like-pill" type="button" aria-pressed="false" aria-label="标记宝宝喜欢"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.2-9-8.8a5 5 0 0 1 8-4.9 5 5 0 0 1 8 4.9C19 15.8 12 20 12 20Z"/></svg></button>
           </article>
         </div>
       </section>
 
-      <section class="screen" id="record-screen" aria-label="记录页面">
+      <section class="screen sub-screen" id="record-screen" aria-label="记录页面">
         <header class="topbar">
           <div>
             <div class="eyebrow">今天吃过什么</div>
@@ -1928,32 +254,32 @@
         <div class="form-list">
           <article class="form-card editable" data-action="edit-food">
             <div class="field-food-stack" aria-hidden="true">
-              <img src="assets/clean-ingredients/pumpkin.png" alt="">
-              <img src="assets/clean-ingredients/carrot.png" alt="">
-              <img src="assets/clean-ingredients/rice.png" alt="">
+              <img src="assets/clean-ingredients/pumpkin.png" alt="" loading="lazy">
+              <img src="assets/clean-ingredients/carrot.png" alt="" loading="lazy">
+              <img src="assets/clean-ingredients/rice.png" alt="" loading="lazy">
             </div>
             <div class="form-copy"><input class="manual-field form-name" id="record-food-input" type="text" value="南瓜、胡萝卜、软饭" aria-label="今日食材"><div class="food-meta">今日食材</div></div>
             <div class="edit-hint">修改</div>
           </article>
           <article class="form-card amount-card">
-            <div class="rice-state half" aria-hidden="true"><img id="rice-state-img" src="assets/clean-rice-amount/half.png" alt=""></div>
+            <div class="rice-state half" aria-hidden="true"><img id="rice-state-img" src="assets/clean-rice-amount/half.png" alt="" loading="lazy"></div>
             <div class="form-copy">
-              <div class="form-name">小半碗</div>
+              <div class="form-name">半碗</div>
               <div class="food-meta">分量</div>
               <div class="amount-options" aria-label="米饭食用量">
-                <button class="amount-option" type="button" data-amount="full"><img class="amount-mini" src="assets/clean-rice-amount/full.png" alt="">整碗</button>
-                <button class="amount-option active" type="button" data-amount="half"><img class="amount-mini" src="assets/clean-rice-amount/half.png" alt="">半碗</button>
-                <button class="amount-option" type="button" data-amount="empty"><img class="amount-mini" src="assets/clean-rice-amount/empty.png" alt="">空碗</button>
+                <button class="amount-option" type="button" data-amount="full"><img class="amount-mini" src="assets/clean-rice-amount/full.png" alt="" loading="lazy">整碗</button>
+                <button class="amount-option active" type="button" data-amount="half"><img class="amount-mini" src="assets/clean-rice-amount/half.png" alt="" loading="lazy">半碗</button>
+                <button class="amount-option" type="button" data-amount="empty"><img class="amount-mini" src="assets/clean-rice-amount/empty.png" alt="" loading="lazy">空碗</button>
               </div>
             </div>
           </article>
           <article class="form-card editable" data-action="edit-time">
-            <div class="field-icon" aria-hidden="true"><img class="time-img" src="assets/clean-icons/time-clock.png" alt=""></div>
+            <div class="field-icon" aria-hidden="true"><img class="time-img" src="assets/clean-icons/time-clock.png" alt="" loading="lazy"></div>
             <div class="form-copy"><button class="picker-trigger form-name" id="record-time-input" type="button" data-picker="time" data-value="10:30">上午 10:30</button><div class="food-meta">喂食时间</div></div>
             <div class="edit-hint">修改</div>
           </article>
           <div class="photo-card" id="record-photo-card" data-action="change-photo">
-            <div class="photo-card-preview"><img id="record-photo-img" src="assets/clean-ingredients/rice.png" alt="今日辅食照片"></div>
+            <div class="photo-card-preview"><img id="record-photo-img" src="assets/clean-ingredients/rice.png" alt="今日辅食照片" loading="lazy"></div>
             <div class="photo-empty">
               <div class="photo-icon-box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14.5 4 16 7h3a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h3l1.5-3h5Z"/><circle cx="12" cy="13" r="3"/></svg></div>
               <div class="photo-card-text"><div class="form-name">上传辅食照片</div><div class="food-meta">直接选择，上传后原位展示。</div></div>
@@ -1971,12 +297,12 @@
         </div>
         <div class="record-list">
           <article class="record-card" data-open="record-detail-screen">
-            <div class="record-photo" aria-hidden="true"><img src="assets/clean-ingredients/rice.png" alt=""><span>今天</span></div>
-            <div class="record-copy"><div class="record-name">南瓜胡萝卜软饭</div><div class="record-meta">小半碗，接受度好</div></div>
+            <div class="record-photo" aria-hidden="true"><img src="assets/clean-ingredients/rice.png" alt="" loading="lazy"><span>今天</span></div>
+            <div class="record-copy"><div class="record-name">南瓜胡萝卜软饭</div><div class="record-meta">半碗，接受度好</div></div>
             <button class="love" type="button" aria-pressed="true" aria-label="取消宝宝喜欢"><svg viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg></button>
           </article>
           <article class="record-card" data-open="record-detail-screen">
-            <div class="record-photo" aria-hidden="true"><img src="assets/clean-ingredients/noodles.png" alt=""><span>昨天</span></div>
+            <div class="record-photo" aria-hidden="true"><img src="assets/clean-ingredients/noodles.png" alt="" loading="lazy"><span>昨天</span></div>
             <div class="record-copy"><div class="record-name">番茄鸡蛋软面</div><div class="record-meta">少油少盐，嘟嘟喜欢</div></div>
             <button class="love" type="button" aria-pressed="true" aria-label="取消宝宝喜欢"><svg viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg></button>
           </article>
@@ -1995,7 +321,7 @@
         </header>
         <article class="detail-hero">
           <div class="detail-main">
-            <img class="hero-food" src="assets/clean-ingredients/rice.png" alt="">
+            <img class="hero-food" src="assets/clean-ingredients/rice.png" alt="" loading="lazy">
             <div>
               <div class="detail-title">南瓜胡萝卜软饭</div>
               <p class="food-meta">适合一岁+，软烂小块，少油少盐。</p>
@@ -2035,7 +361,7 @@
         </header>
         <article class="detail-hero">
           <div class="detail-main">
-            <img class="hero-food" src="assets/clean-ingredients/carrot.png" alt="">
+            <img class="hero-food" src="assets/clean-ingredients/carrot.png" alt="" loading="lazy">
             <div><div class="detail-title">胡萝卜</div><p class="food-meta">建议优先使用，适合搭配主食和南瓜。</p></div>
           </div>
           <div class="chips"><span class="chip">购入第4天</span><span class="chip">冷藏</span><span class="chip">还剩2天</span></div>
@@ -2049,8 +375,8 @@
         <section class="info-panel">
           <div class="panel-title">可搭配辅食</div>
           <div class="panel-list">
-            <div class="mini-record"><img class="ingredient-img" src="assets/clean-ingredients/rice.png" alt=""><div><div class="food-name">胡萝卜南瓜软饭</div><p class="food-meta">软烂小块，适合一岁+</p></div></div>
-            <div class="mini-record"><img class="ingredient-img" src="assets/clean-ingredients/noodles.png" alt=""><div><div class="food-name">胡萝卜鸡蛋软面</div><p class="food-meta">清淡易入口</p></div></div>
+            <div class="mini-record"><img class="ingredient-img" src="assets/clean-ingredients/rice.png" alt="" loading="lazy"><div><div class="food-name">胡萝卜南瓜软饭</div><p class="food-meta">软烂小块，适合一岁+</p></div></div>
+            <div class="mini-record"><img class="ingredient-img" src="assets/clean-ingredients/noodles.png" alt="" loading="lazy"><div><div class="food-name">胡萝卜鸡蛋软面</div><p class="food-meta">清淡易入口</p></div></div>
           </div>
         </section>
         <div class="sub-actions"><button class="main-button" type="button" data-open="recipe-detail-screen">用它做辅食</button><button class="ghost-button" type="button" data-action="use-up-ingredient">标记用完</button></div>
@@ -2079,15 +405,15 @@
         </header>
         <article class="detail-hero">
           <div class="detail-main">
-            <img class="feedback-mood" src="assets/baby-moods/happy.png" alt="">
+            <img class="feedback-mood" src="assets/baby-moods/happy.png" alt="" loading="lazy">
             <div><div class="detail-title">今天很开心</div><p class="food-meta">吃饭状态稳定，接受度好。</p></div>
           </div>
         </article>
-        <div class="photo-preview"><div><img src="assets/clean-ingredients/rice.png" alt=""><div class="food-name">南瓜胡萝卜软饭</div></div></div>
+        <div class="photo-preview"><div><img src="assets/clean-ingredients/rice.png" alt="" loading="lazy"><div class="food-name">南瓜胡萝卜软饭</div></div></div>
         <section class="info-panel">
           <div class="panel-title">饮食内容</div>
           <div class="info-row"><strong>今日食材</strong><span>南瓜、胡萝卜、软饭</span></div>
-          <div class="info-row"><strong>食用分量</strong><span>小半碗</span></div>
+          <div class="info-row"><strong>食用分量</strong><span>半碗</span></div>
           <div class="info-row"><strong>喂食时间</strong><span>上午 10:30</span></div>
           <div class="info-row"><strong>宝宝反馈</strong><span>接受度好</span></div>
         </section>
@@ -2102,8 +428,8 @@
         </header>
         <div class="segmented" aria-label="历史筛选"><button class="segment active" type="button" data-filter="today">今天</button><button class="segment" type="button" data-filter="week">本周</button><button class="segment" type="button" data-filter="month">本月</button></div>
         <div class="record-list history-list">
-          <article class="record-card" data-open="record-detail-screen"><div class="record-photo" aria-hidden="true"><img src="assets/clean-ingredients/rice.png" alt=""><span>今天</span></div><div class="record-copy"><div class="record-name">南瓜胡萝卜软饭</div><div class="record-meta">小半碗，接受度好</div></div><img class="feedback-mood" src="assets/baby-moods/happy.png" alt=""></article>
-          <article class="record-card" data-open="record-detail-screen"><div class="record-photo" aria-hidden="true"><img src="assets/clean-ingredients/noodles.png" alt=""><span>昨天</span></div><div class="record-copy"><div class="record-name">番茄鸡蛋软面</div><div class="record-meta">半碗，嘟嘟喜欢</div></div><img class="feedback-mood" src="assets/baby-moods/normal.png" alt=""></article>
+          <article class="record-card" data-open="record-detail-screen"><div class="record-photo" aria-hidden="true"><img src="assets/clean-ingredients/rice.png" alt="" loading="lazy"><span>今天</span></div><div class="record-copy"><div class="record-name">南瓜胡萝卜软饭</div><div class="record-meta">半碗，接受度好</div></div><img class="feedback-mood" src="assets/baby-moods/happy.png" alt="" loading="lazy"></article>
+          <article class="record-card" data-open="record-detail-screen"><div class="record-photo" aria-hidden="true"><img src="assets/clean-ingredients/noodles.png" alt="" loading="lazy"><span>昨天</span></div><div class="record-copy"><div class="record-name">番茄鸡蛋软面</div><div class="record-meta">半碗，嘟嘟喜欢</div></div><img class="feedback-mood" src="assets/baby-moods/normal.png" alt="" loading="lazy"></article>
         </div>
       </section>
 
@@ -2114,12 +440,12 @@
           <span></span>
         </header>
         <div class="food-list">
-          <article class="food-card" data-open="ingredient-detail-screen"><div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/carrot.png" alt=""></div><div class="food-copy"><div class="food-name">胡萝卜建议优先用</div><div class="food-meta">已存放4天，今天推荐加入辅食</div></div><span class="food-tag">食材</span></article>
-          <article class="food-card" data-go="record"><div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/rice.png" alt=""></div><div class="food-copy"><div class="food-name">今天还没保存记录</div><div class="food-meta">上传辅食照片后可保存今日记录</div></div><span class="food-tag">记录</span></article>
+          <article class="food-card" data-open="ingredient-detail-screen"><div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/carrot.png" alt="" loading="lazy"></div><div class="food-copy"><div class="food-name">胡萝卜建议优先用</div><div class="food-meta">已存放4天，今天推荐加入辅食</div></div><span class="food-tag" role="note">食材</span></article>
+          <article class="food-card" data-go="record"><div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/rice.png" alt="" loading="lazy"></div><div class="food-copy"><div class="food-name">今天还没保存记录</div><div class="food-meta">上传辅食照片后可保存今日记录</div></div><span class="food-tag" role="note">记录</span></article>
         </div>
       </section>
 
-      <nav class="tabbar" aria-label="底部导航">
+      <nav class="tabbar hidden" aria-label="底部导航">
         <button class="nav-item active" type="button" data-target="home">
           <svg viewBox="0 0 48 48" aria-hidden="true">
             <path class="nav-mark" d="M18 25c2.6-2.2 9.4-2.2 12 0v7.2c0 2.3-1.6 3.8-3.8 3.8h-4.4c-2.2 0-3.8-1.5-3.8-3.8V25Z"/>
@@ -2151,7 +477,7 @@
       <input id="meal-photo-input" type="file" accept="image/*" hidden>
       <div class="image-lightbox" id="image-lightbox" aria-hidden="true">
         <button class="lightbox-close" type="button" id="lightbox-close" aria-label="关闭照片预览">×</button>
-        <img id="lightbox-img" src="" alt="辅食照片放大预览">
+        <img id="lightbox-img" src="" alt="辅食照片放大预览" loading="lazy">
       </div>
       <div class="picker-mask" id="picker-mask"></div>
       <section class="picker-sheet" id="picker-sheet" aria-label="日期时间选择器">
@@ -2177,6 +503,44 @@
   </main>
 
   <script>
+    /* ===== 设计调色板：HEX / RGB / HSL（与 :root 变量一一对应，可在 JS 中动态取色）=====
+       rgb 为三元组 [r,g,b]；hsl 为 [h,s%,l%]，便于程序化换肤 / 计算对比色 */
+    const PALETTE = {
+      theme:      { hex: '#ffc928', rgb: [255, 201, 40],  hsl: [45, 100, 58] },
+      'theme-deep': { hex: '#f5ae16', rgb: [245, 174, 22],  hsl: [41, 92, 52] },
+      'theme-soft': { hex: '#fff2bf', rgb: [255, 242, 191], hsl: [48, 100, 88] },
+      bg:         { hex: '#fff4e8', rgb: [255, 244, 232], hsl: [31, 100, 95] },
+      phone:      { hex: '#fffefd', rgb: [255, 254, 253], hsl: [30, 100, 100] },
+      card:       { hex: '#ffffff', rgb: [255, 255, 255], hsl: [0, 0, 100] },
+      text:       { hex: '#34333a', rgb: [52, 51, 58],     hsl: [249, 6, 21] },
+      muted:      { hex: '#8d8991', rgb: [141, 137, 145], hsl: [270, 4, 55] },
+      line:       { hex: '#f0ebe4', rgb: [240, 235, 228], hsl: [35, 29, 92] }
+    };
+
+    function hexToRgb(hex) {
+      const h = hex.replace('#', '');
+      const n = parseInt(h.length === 3 ? h.split('').map(c => c + c).join('') : h, 16);
+      return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+    }
+    function rgbToHsl(r, g, b) {
+      r /= 255; g /= 255; b /= 255;
+      const max = Math.max(r, g, b), min = Math.min(r, g, b);
+      let h = 0, s = 0; const l = (max + min) / 2;
+      const d = max - min;
+      if (d !== 0) {
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        switch (max) {
+          case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+          case g: h = (b - r) / d + 2; break;
+          default: h = (r - g) / d + 4;
+        }
+        h *= 60;
+      }
+      return [Math.round(h), Math.round(s * 100), Math.round(l * 100)];
+    }
+    function hexToHsl(hex) { const [r, g, b] = hexToRgb(hex); return rgbToHsl(r, g, b); }
+    // 例：带透明度取色 -> `rgb(${PALETTE.theme.rgb.join(',')} / .2)`
+
     const moodMap = {
       happy: {
         theme: '#ffc928',
@@ -2227,6 +591,11 @@
     const moodIcon = document.getElementById('mood-icon');
     const moodTitle = document.getElementById('mood-title');
     const moodDesc = document.getElementById('mood-desc');
+    const loginForm = document.getElementById('login-form');
+    const loginPhone = document.getElementById('login-phone');
+    const loginCode = document.getElementById('login-code');
+    const loginSendCode = document.getElementById('login-send-code');
+    const loginMessage = document.getElementById('login-message');
     const toast = document.getElementById('toast');
     let toastTimer;
     const pickerMask = document.getElementById('picker-mask');
@@ -2244,6 +613,12 @@
       toastTimer = setTimeout(() => toast.classList.remove('show'), 1600);
     }
 
+    function setLoginMessage(text, state = '') {
+      if (!loginMessage) return;
+      loginMessage.textContent = text;
+      loginMessage.className = `login-message ${state}`.trim();
+    }
+
     function scrollActiveTop() {
       const active = document.querySelector('.screen.active');
       if (active) active.scrollTop = 0;
@@ -2258,6 +633,12 @@
     function formatDate(value) {
       const [, month, day] = value.split('-').map(Number);
       return `${month}月${day}日`;
+    }
+
+    function formatToday() {
+      const now = new Date();
+      const weekdays = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+      return `${now.getMonth() + 1}月${now.getDate()}日 ${weekdays[now.getDay()]}`;
     }
 
     function makeColumn(key, values, activeValue) {
@@ -2350,10 +731,17 @@
         moodBlob.className = 'mood-blob';
         moodIcon.src = `assets/baby-moods/${button.dataset.mood}.png`;
         moodIcon.alt = '宝宝表情';
-        moodTitle.textContent = '9月1日 星期二';
-        moodDesc.textContent = '头像跟随心情变化，主题色同步切换。';
+        moodTitle.textContent = formatToday();
+        moodDesc.textContent = mood.desc;
       });
     });
+
+    function resetSaveRecordButton() {
+      const btn = document.querySelector('[data-action="save-record"]');
+      if (!btn) return;
+      btn.textContent = '保存今日记录';
+      btn.classList.remove('is-done');
+    }
 
     function switchScreen(target) {
       document.querySelectorAll('.screen').forEach((screen) => {
@@ -2362,6 +750,9 @@
       document.querySelectorAll('.nav-item').forEach((item) => {
         item.classList.toggle('active', item.dataset.target === target);
       });
+      const tabbar = document.querySelector('.tabbar');
+      if (tabbar) tabbar.classList.toggle('hidden', !['home', 'ingredients', 'record'].includes(target));
+      if (target === 'record') resetSaveRecordButton();
       scrollActiveTop();
     }
 
@@ -2369,7 +760,30 @@
       document.querySelectorAll('.screen').forEach((screen) => {
         screen.classList.toggle('active', screen.id === screenId);
       });
+      document.querySelectorAll('.nav-item').forEach((item) => {
+        item.classList.toggle('active', screenId === `${item.dataset.target}-screen`);
+      });
+      const tabbar = document.querySelector('.tabbar');
+      if (tabbar) tabbar.classList.toggle('hidden', !['home-screen', 'ingredients-screen', 'record-screen'].includes(screenId));
       scrollActiveTop();
+    }
+
+    function showPreviewScreen() {
+      const params = new URLSearchParams(window.location.search);
+      const screenId = params.get('screen');
+      if (!screenId) return;
+      openScreen(screenId);
+      if (params.get('static') === '1') {
+        document.body.classList.add('static-shot');
+      }
+      if (params.get('picker') === 'time') {
+        const target = document.querySelector('#record-time-input');
+        if (target) openPicker(target);
+      }
+      if (params.get('lightbox') === 'photo') {
+        const src = document.querySelector('#record-photo-img')?.src || document.querySelector('.food-thumb img')?.src;
+        if (src) openImageLightbox(src);
+      }
     }
 
     document.querySelectorAll('.nav-item').forEach((item) => {
@@ -2390,6 +804,32 @@
     document.querySelectorAll('[data-back]').forEach((item) => {
       item.addEventListener('click', () => switchScreen(item.dataset.back));
     });
+
+    if (loginSendCode) {
+      loginSendCode.addEventListener('click', () => {
+        if (!loginPhone.value.trim()) {
+          setLoginMessage('请输入手机号。', 'error');
+          loginPhone.focus();
+          return;
+        }
+        setLoginMessage('测试验证码为 1234。', 'success');
+        loginCode.focus();
+      });
+    }
+
+    if (loginForm) {
+      loginForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const phone = loginPhone.value.trim();
+        const code = loginCode.value.trim();
+        if (phone === '1234' && code === '1234') {
+          setLoginMessage('验证成功，正在进入首页。', 'success');
+          setTimeout(() => switchScreen('home'), 260);
+          return;
+        }
+        setLoginMessage('手机号或验证码不正确，请使用测试凭据 1234 / 1234。', 'error');
+      });
+    }
 
     document.querySelectorAll('[data-picker]').forEach((button) => {
       button.addEventListener('click', () => openPicker(button));
@@ -2452,7 +892,7 @@
 
     const amountLabels = {
       full: '一整碗',
-      half: '小半碗',
+      half: '半碗',
       empty: '空碗'
     };
 
@@ -2626,7 +1066,7 @@
       detailScreen.querySelector('.detail-main .food-meta').textContent = recipe.desc;
       renderChips(detailScreen.querySelector('.detail-hero .chips'), recipe.chips);
       const ageReason = document.getElementById('recipe-age-reason');
-      if (ageReason) ageReason.textContent = `${getAgeStage(currentAge ? currentAge.totalMonths : recipe.minMonths)}${recipe.ageNote ? ` ${recipe.ageNote}` : ''}`;
+      if (ageReason) ageReason.textContent = recipe.ageNote || getAgeStage(currentAge ? currentAge.totalMonths : recipe.minMonths);
 
       const reasonRows = detailScreen.querySelectorAll('.info-panel:nth-of-type(1) .info-row span');
       if (reasonRows[1]) reasonRows[1].textContent = recipe.reason.stock;
@@ -2657,13 +1097,13 @@
 
     function createIngredientCard(name, dateText, category, storage) {
       const article = document.createElement('article');
-      const icon = category === '主食' ? 'rice' : category === '蛋白质' ? 'noodles' : category === '水果' ? 'pumpkin' : 'carrot';
+      const icon = category === '主食' ? 'rice' : category === '蛋白质' ? 'noodles' : category === '水果' ? 'apple' : 'carrot';
       article.className = 'food-card';
       article.dataset.open = 'ingredient-detail-screen';
       article.innerHTML = `
-        <div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/${icon}.png" alt=""></div>
+        <div class="food-thumb" aria-hidden="true"><img class="ingredient-img" src="assets/clean-ingredients/${icon}.png" alt="" loading="lazy"></div>
         <div class="food-copy"><div class="food-name">${name}</div><div class="food-meta">${dateText}，${storage}</div></div>
-        <span class="food-tag">${category}</span>
+        <span class="food-tag" role="note">${category}</span>
       `;
       article.addEventListener('click', (event) => {
         event.stopPropagation();
@@ -2718,6 +1158,7 @@
           button.textContent = '已保存今日记录';
           button.classList.add('is-done');
           showToast('今日记录已保存');
+          saveRecord();
         }
         if (action === 'save-ingredient') {
           const name = addIngredientName.value.trim() || '新食材';
@@ -2734,7 +1175,8 @@
           document.querySelectorAll('[data-open="ingredient-detail-screen"]').forEach((card) => card.classList.add('is-used'));
           button.textContent = '已标记用完';
           button.classList.add('is-done');
-          showToast('胡萝卜已标记用完');
+          const ingName = document.querySelector('#ingredient-detail-screen .detail-title');
+          showToast(`${ingName ? ingName.textContent : '该食材'}已标记用完`);
         }
         if (action === 'eat-again') showToast('已带入今日记录');
         if (action === 'change-photo') {
@@ -2793,7 +1235,59 @@
     });
     lightboxImg.addEventListener('click', (event) => event.stopPropagation());
 
+    const RECORD_KEY = 'dudu.record.v1';
+    function saveRecord() {
+      try {
+        const activeAmount = document.querySelector('.amount-option.active');
+        const data = {
+          food: recordFoodInput ? recordFoodInput.value : '',
+          amount: activeAmount ? activeAmount.dataset.amount : 'half',
+          time: recordTimeInput ? recordTimeInput.dataset.value : '10:30'
+        };
+        localStorage.setItem(RECORD_KEY, JSON.stringify(data));
+      } catch (e) { /* localStorage 不可用时忽略 */ }
+    }
+    function loadRecord() {
+      try {
+        const raw = localStorage.getItem(RECORD_KEY);
+        if (!raw) return;
+        const data = JSON.parse(raw);
+        if (data.food && recordFoodInput) recordFoodInput.value = data.food;
+        if (data.time && recordTimeInput) {
+          recordTimeInput.dataset.value = data.time;
+          recordTimeInput.textContent = formatTime(data.time);
+        }
+        if (data.amount) {
+          const opt = document.querySelector(`.amount-option[data-amount="${data.amount}"]`);
+          if (opt) {
+            document.querySelectorAll('.amount-option').forEach((item) => item.classList.remove('active'));
+            opt.classList.add('active');
+            const riceState = document.querySelector('.rice-state');
+            if (riceState) riceState.className = `rice-state ${data.amount}`;
+            const img = document.getElementById('rice-state-img');
+            if (img) img.src = `assets/clean-rice-amount/${data.amount}.png`;
+            const fn = document.querySelector('.amount-card .form-name');
+            if (fn) fn.textContent = amountLabels[data.amount];
+          }
+        }
+      } catch (e) { /* 忽略损坏数据 */ }
+    }
+
+    function initStaticText() {
+      if (moodTitle) moodTitle.textContent = formatToday();
+      if (moodDesc) moodDesc.textContent = moodMap.happy.desc;
+      if (addIngredientDate) {
+        const today = new Date();
+        const ymd = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+        addIngredientDate.dataset.value = ymd;
+        addIngredientDate.textContent = formatDate(ymd);
+      }
+    }
+
+    initStaticText();
     updateBabyAge();
+    loadRecord();
+    showPreviewScreen();
     setInterval(updateBabyAge, 60 * 60 * 1000);
   </script>
 </body>
