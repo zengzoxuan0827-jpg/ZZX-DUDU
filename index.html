@@ -738,6 +738,14 @@
       if (params.get('static') === '1') {
         document.body.classList.add('static-shot');
       }
+      if (params.get('picker') === 'time') {
+        const target = document.querySelector('#record-time-input');
+        if (target) openPicker(target);
+      }
+      if (params.get('lightbox') === 'photo') {
+        const src = document.querySelector('#record-photo-img')?.src || document.querySelector('.food-thumb img')?.src;
+        if (src) openImageLightbox(src);
+      }
     }
 
     document.querySelectorAll('.nav-item').forEach((item) => {
