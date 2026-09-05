@@ -2068,6 +2068,16 @@
       border-radius: 40px;
     }
 
+    .mood-hero {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .mood-blob {
+      margin-left: -20px;
+    }
+
     .food-card,
     .record-card,
     .form-card,
