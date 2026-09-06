@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>嘟嘟今天吃什么 · iOS 移动端测试</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #f0f0f3 0%, #e8e8ed 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+  }
+  h1 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1d1d1f;
+    margin-bottom: 4px;
+  }
+  .subtitle {
+    font-size: 14px;
+    color: #86868b;
+    margin-bottom: 32px;
+  }
+  .device-wrapper {
+    position: relative;
+    width: 393px;
+    height: 852px;
+    flex-shrink: 0;
+  }
+  .device {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    border-radius: 55px;
+    box-shadow: 0 0 0 2px #1d1d1f, 0 0 0 12px #2d2d2f, 0 0 0 13px #1d1d1f,
+                0 50px 100px rgba(0,0,0,0.25);
+    padding: 12px;
+    position: relative;
+  }
+  .screen-container {
+    width: 100%;
+    height: 100%;
+    border-radius: 44px;
+    overflow: hidden;
+    background: #fff;
+    position: relative;
+  }
+  .dynamic-island {
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 35px;
+    background: #000;
+    border-radius: 20px;
+    z-index: 1000;
+  }
+  .home-indicator {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 134px;
+    height: 5px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 3px;
+    z-index: 1000;
+  }
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: 44px;
+    display: block;
+  }
+  .controls {
+    display: flex;
+    gap: 8px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 500px;
+  }
+  .btn {
+    padding: 8px 16px;
+    border: 1px solid #d2d2d7;
+    border-radius: 20px;
+    background: #fff;
+    color: #1d1d1f;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .btn:hover { background: #f5f5f7; border-color: #b0b0b5; }
+  .btn.active { background: #007aff; color: #fff; border-color: #007aff; }
+  .info-bar {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #86868b;
+    text-align: center;
+  }
+  @media (max-height: 950px) {
+    .device-wrapper { transform: scale(0.85); transform-origin: top center; }
+    body { padding-top: 20px; }
+  }
+  @media (max-height: 800px) {
+    .device-wrapper { transform: scale(0.7); }
+  }
+</style>
+</head>
+<body>
+  <h1>嘟嘟今天吃什么</h1>
+  <p class="subtitle">iOS 移动端测试预览 · iPhone 15 Pro (393×852)</p>
+
+  <div class="device-wrapper">
+    <div class="device">
+      <div class="dynamic-island"></div>
+      <div class="screen-container">
+        <iframe id="appFrame" src="index.html"></iframe>
+      </div>
+      <div class="home-indicator"></div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button class="btn active" data-screen="home">首页</button>
+    <button class="btn" data-screen="baby-profile">宝宝资料</button>
+    <button class="btn" data-screen="ingredients">食材</button>
+    <button class="btn" data-screen="record">记录</button>
+    <button class="btn" data-screen="recipe-detail">辅食详情</button>
+    <button class="btn" data-screen="history">历史回顾</button>
+    <button class="btn" data-screen="reminder">提醒</button>
+    <button class="btn" data-screen="login">登录</button>
+  </div>
+
+  <p class="info-bar">点击按钮切换页面 · Dynamic Island + Home Indicator 模拟 iPhone 15 Pro</p>
+
+  <script>
+    const frame = document.getElementById('appFrame');
+    const btns = document.querySelectorAll('.btn');
+
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const screen = btn.dataset.screen;
+        frame.contentWindow.postMessage({ type: 'switchScreen', screen: screen }, '*');
+      });
+    });
+
+    window.addEventListener('message', (e) => {
+      if (e.data && e.data.type === 'screenReady') {
+        console.log('Screen ready:', e.data.screen);
+      }
+    });
+
+    frame.addEventListener('load', () => {
+      frame.contentWindow.postMessage({ type: 'switchScreen', screen: 'home' }, '*');
+    });
+  </script>
+</body>
+</html>

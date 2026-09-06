@@ -1347,6 +1347,11 @@
     updateBabyAge();
     loadRecord();
     showPreviewScreen();
+    window.addEventListener('message', (e) => {
+      if (e.data && e.data.type === 'switchScreen' && e.data.screen) {
+        openScreen(e.data.screen + '-screen');
+      }
+    });
     setInterval(updateBabyAge, 60 * 60 * 1000);
   </script>
 </body>
