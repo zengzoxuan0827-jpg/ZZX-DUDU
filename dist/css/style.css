@@ -2149,7 +2149,8 @@
       }
     }
 
-    /* ===== 用户 UI 设计规范：页面比例与登录页集成 ===== */
+    /* ===== 用户 UI 设计规范：页面比例与登录页集成（仅桌面端） ===== */
+    @media (min-width: 431px) {
     body {
       font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
       background: #f7f8fc;
@@ -2328,6 +2329,7 @@
     .tabbar.hidden {
       display: none;
     }
+    } /* end @media (min-width: 431px) */
 
     @media (max-width: 430px) {
       .screen {
