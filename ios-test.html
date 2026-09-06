@@ -131,8 +131,9 @@
   </div>
 
   <div class="controls">
-    <button class="btn active" data-screen="home">首页</button>
-    <button class="btn" data-screen="baby-profile">宝宝资料</button>
+    <button class="btn active" data-screen="login">登录</button>
+    <button class="btn" data-screen="home">首页</button>
+    <button class="btn" data-screen="baby-profile">宝宝资料(含退出)</button>
     <button class="btn" data-screen="ingredients">食材</button>
     <button class="btn" data-screen="record">记录</button>
     <button class="btn" data-screen="recipe-detail">辅食详情</button>
@@ -141,7 +142,7 @@
     <button class="btn" data-screen="login">登录</button>
   </div>
 
-  <p class="info-bar">点击按钮切换页面 · Dynamic Island + Home Indicator 模拟 iPhone 15 Pro</p>
+  <p class="info-bar">点击按钮切换页面 · 登录测试凭据：手机号 1234 / 验证码 1234 · 退出登录在「宝宝资料」页底部</p>
 
   <script>
     const frame = document.getElementById('appFrame');
@@ -163,7 +164,9 @@
     });
 
     frame.addEventListener('load', () => {
-      frame.contentWindow.postMessage({ type: 'switchScreen', screen: 'home' }, '*');
+      // 不自动跳转，保留 App 默认状态（登录页）
+      btns.forEach(b => b.classList.remove('active'));
+      document.querySelector('[data-screen="login"]').classList.add('active');
     });
   </script>
 </body>
