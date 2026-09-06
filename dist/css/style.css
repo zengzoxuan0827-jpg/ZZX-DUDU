@@ -2012,6 +2012,10 @@
       width: 40px;
       height: 40px;
       overflow: visible;
+      transform: translateY(-2px);
+    }
+    .nav-item > *:last-child {
+      transform: translateY(-2px);
     }
 
     .nav-line {
