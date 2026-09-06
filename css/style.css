@@ -1245,14 +1245,16 @@
 
     .record-photo span {
       position: absolute;
-      left: 6px;
+      left: 50%;
       bottom: 5px;
+      transform: translateX(-50%);
       padding: 3px 6px;
       border-radius: 999px;
       background: rgba(255, 255, 255, .86);
       color: #5c4a15;
       font-size: 14px;
       font-weight: 800;
+      white-space: nowrap;
     }
 
     .love {
