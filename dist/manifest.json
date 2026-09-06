@@ -1,0 +1,19 @@
+{
+  "name": "嘟嘟今天吃什么",
+  "short_name": "嘟嘟辅食",
+  "description": "0→1 AI-native 婴幼儿辅食规划 App",
+  "start_url": "/ZZX-DUDU/",
+  "scope": "/ZZX-DUDU/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FFE4B5",
+  "theme_color": "#FFE4B5",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

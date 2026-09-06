@@ -2097,17 +2097,32 @@
         display: none;
       }
 
+      .status {
+        display: none;
+      }
+
       .phone {
         width: 100vw;
         height: 100vh;
+        height: 100dvh;
         border-radius: 0;
         border: 0;
         box-shadow: none;
+        padding-top: env(safe-area-inset-top);
+        padding-bottom: env(safe-area-inset-bottom);
       }
 
       .screen {
         padding-left: 18px;
         padding-right: 18px;
+      }
+
+      .topbar {
+        padding-top: env(safe-area-inset-top);
+      }
+
+      .tabbar {
+        padding-bottom: calc(28px + env(safe-area-inset-bottom));
       }
 
       .mood-options {
