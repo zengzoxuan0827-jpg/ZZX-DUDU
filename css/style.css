@@ -1266,10 +1266,10 @@
     }
 
     .love {
-      width: 42px;
-      height: 44px;
+      width: 40px;
+      height: 40px;
       border: 0;
-      border-radius: 16px;
+      border-radius: 50px;
       background: var(--theme-soft);
       color: var(--theme-deep);
       display: grid;
@@ -1397,8 +1397,9 @@
     .love svg {
       width: 22px;
       height: 22px;
-      fill: #fff;
-      stroke: none;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.2;
       stroke-linecap: round;
       stroke-linejoin: round;
     }
